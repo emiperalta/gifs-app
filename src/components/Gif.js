@@ -3,7 +3,7 @@ import React from 'react';
 const Gif = ({ gif: { title, url } }) => {
     return (
         <div>
-            <h4>{title}</h4>
+            <h5>{title}</h5>
             <img src={url} alt={title} />
         </div>
     );

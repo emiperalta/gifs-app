@@ -1,4 +1,4 @@
-export const getGifs = async ({ keyword = 'panda' } = {}) => {
+export const getGifs = async ({ keyword } = {}) => {
     const apiURL = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_KEY}&q=${keyword}&limit=10&offset=0&rating=g&lang=en`;
 
     return fetch(apiURL)

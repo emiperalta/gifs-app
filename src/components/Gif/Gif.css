@@ -12,3 +12,7 @@
     color: #e9e9e9;
     background: rgb(17, 17, 17, 0.3);
 }
+
+.gifItem img {
+    width: 300px;
+}

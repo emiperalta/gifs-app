@@ -3,8 +3,6 @@
 }
 
 .App-content {
-    background-color: #282c34;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,9 +12,19 @@
 }
 
 a {
-    color: yellow;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+a:visited {
+    color: rgb(206, 146, 146);
+}
+a:hover {
+    color: #f0cfcf;
 }
 
-a:visited {
-    color: white;
+.title {
+    font-size: 5rem;
+    color: #fff;
+    padding: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

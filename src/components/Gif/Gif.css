@@ -1,0 +1,14 @@
+.gifItem {
+    position: relative;
+    margin: 10px;
+}
+
+.gifItem h5 {
+    font-size: 10px;
+    margin: 5px 0 0 5px;
+    padding: 2px;
+    position: absolute;
+    top: 0;
+    color: #e9e9e9;
+    background: rgb(17, 17, 17, 0.3);
+}

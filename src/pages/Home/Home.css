@@ -11,3 +11,10 @@
 .searchForm button {
     margin-left: 5px;
 }
+
+.subtitle {
+    font-size: 1.8rem;
+    margin: 35px 0 0 0;
+    color: #8e9db4;
+    text-decoration: underline;
+}

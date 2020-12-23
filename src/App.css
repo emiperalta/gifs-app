@@ -29,3 +29,12 @@ a:hover {
     margin-bottom: 2rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+.title span {
+    cursor: pointer;
+}
+
+span a,
+span a:hover,
+span a:visited {
+    color: #fff;
+}

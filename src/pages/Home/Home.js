@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 
-import GifsList from '../../components/GifsList/GifsList';
-import useGifs from '../../hooks/useGifs';
+import TrendingSearches from 'components/TrendingSearches/TrendingSearches';
+import GifsList from 'components/GifsList/GifsList';
+import useGifs from 'hooks/useGifs';
 import './Home.css';
 
 const Home = () => {
@@ -31,10 +32,7 @@ const Home = () => {
                 <button>Search</button>
             </form>
 
-            <Link to='/search/panda'>panda gifs</Link>
-            <Link to='/search/monkey'>monkeys gifs</Link>
-            <Link to='/search/racoon'>racoon gifs</Link>
-            <Link to='/search/christmas'>christmas gifs</Link>
+            <TrendingSearches />
 
             <h3 className='subtitle'>Last search</h3>
             <GifsList gifs={gifs} />

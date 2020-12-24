@@ -1,5 +1,7 @@
-export const getGifs = async ({ keyword } = {}) => {
-    const apiURL = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_KEY}&q=${keyword}&limit=10&offset=0&rating=g&lang=en`;
+const { REACT_APP_API_KEY, REACT_APP_API_BASEURL } = process.env;
+
+export const getGifs = ({ keyword } = {}) => {
+    const apiURL = `${REACT_APP_API_BASEURL}/gifs/search?api_key=${REACT_APP_API_KEY}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`;
 
     return fetch(apiURL)
         .then(res => res.json())
@@ -14,5 +16,17 @@ export const getGifs = async ({ keyword } = {}) => {
                 });
                 return gifsArray;
             }
+        });
+};
+
+export const getTrendingTerms = () => {
+    const apiURL = `${REACT_APP_API_BASEURL}/trending/searches?api_key=${REACT_APP_API_KEY}`;
+
+    return fetch(apiURL)
+        .then(res => res.json())
+        .then(response => {
+            const { data = [] } = response;
+
+            return data;
         });
 };

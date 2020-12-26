@@ -14,7 +14,7 @@ const TrendingSearches = () => {
     return (
         <div className='trending'>
             {trends.map(trend => (
-                <Link to={`/search/${trend}`} className='trendItem'>
+                <Link to={`/search/${trend}`} className='trendItem' key={trend}>
                     {trend}
                 </Link>
             ))}

@@ -8,7 +8,7 @@ const Gif = ({ gif: { id, title, url } }) => {
         <Link to={`/gif/${id}`}>
             <div className='gifItem'>
                 <h5>{title}</h5>
-                <img loading='lazy' src={url} alt={title} />
+                <img src={url} alt={title} />
             </div>
         </Link>
     );

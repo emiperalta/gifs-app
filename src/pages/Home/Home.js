@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'wouter';
+import { useLocation } from 'wouter';
 
-import TrendingSearches from 'components/TrendingSearches/TrendingSearches';
+import TrendingSearches from 'components/TrendingSearches/LazyTrending';
 import GifsList from 'components/GifsList/GifsList';
 import useGifs from 'hooks/useGifs';
 import './Home.css';
@@ -32,10 +32,10 @@ const Home = () => {
                 <button>Search</button>
             </form>
 
-            <TrendingSearches />
-
             <h3 className='subtitle'>Last search</h3>
             <GifsList gifs={gifs} />
+
+            <TrendingSearches />
         </>
     );
 };

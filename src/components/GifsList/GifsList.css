@@ -1,5 +1,4 @@
 .gifsList {
-    min-height: 100vh;
     padding: 25px 0;
     display: flex;
     flex-direction: row;

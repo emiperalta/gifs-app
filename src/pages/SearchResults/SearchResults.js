@@ -1,20 +1,27 @@
 import React from 'react';
 
+import LoadingImages from 'components/ContentLoader/LoadingImages';
 import GifsList from 'components/GifsList/GifsList';
 import useGifs from 'hooks/useGifs';
+import './SearchResults.css';
 
 const SearchResults = ({ params: { keyword } }) => {
-    const { loading, gifs } = useGifs({ keyword });
+    const { loading, gifs, setPage } = useGifs({ keyword });
+
+    const nextPageHandler = () => setPage(prevPage => prevPage + 1);
 
     return (
         <>
             {loading ? (
-                <h4>Loading...</h4>
+                <LoadingImages />
             ) : (
-                <div>
-                    <h3>{decodeURI(keyword)}</h3>
+                <>
+                    <h3 className='searchWord'>{decodeURI(keyword)}</h3>
                     <GifsList gifs={gifs} />
-                </div>
+                    <button className='nextPage' onClick={nextPageHandler}>
+                        ➜
+                    </button>
+                </>
             )}
         </>
     );

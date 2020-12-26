@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-const Loading = props => (
+const LoadingTrends = props => (
     <ContentLoader
         speed={2}
         width={600}
@@ -29,4 +29,4 @@ const Loading = props => (
     </ContentLoader>
 );
 
-export default Loading;
+export default LoadingTrends;

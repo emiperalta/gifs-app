@@ -1,7 +1,9 @@
 const { REACT_APP_API_KEY, REACT_APP_API_BASEURL } = process.env;
 
-export const getGifs = ({ keyword } = {}) => {
-    const apiURL = `${REACT_APP_API_BASEURL}/gifs/search?api_key=${REACT_APP_API_KEY}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`;
+export const getGifs = ({ keyword, limit = 25, page = 0 } = {}) => {
+    const apiURL = `${REACT_APP_API_BASEURL}/gifs/search?api_key=${REACT_APP_API_KEY}&q=${keyword}&limit=${limit}&offset=${
+        page * limit
+    }&rating=g&lang=en`;
 
     return fetch(apiURL)
         .then(res => res.json())

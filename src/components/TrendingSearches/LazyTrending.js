@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 
 import useNearScreen from 'hooks/useNearScreen';
-import Loading from 'components/ContentLoader/Loading';
+import LoadingTrends from 'components/ContentLoader/LoadingTrends';
 const TrendingSearches = React.lazy(() => import('./TrendingSearches'));
 
 const LazyTrending = () => {
@@ -9,8 +9,8 @@ const LazyTrending = () => {
 
     return (
         <div ref={elementRef}>
-            <Suspense fallback={<Loading />}>
-                {isNear ? <TrendingSearches /> : <Loading />}
+            <Suspense fallback={<LoadingTrends />}>
+                {isNear ? <TrendingSearches /> : <LoadingTrends />}
             </Suspense>
         </div>
     );

@@ -1,0 +1,18 @@
+.searchWord {
+    margin: 0;
+    padding: 0;
+}
+
+.nextPage {
+    font-size: 3rem;
+    border-radius: 3rem;
+    border: none;
+    outline-style: none;
+    cursor: pointer;
+    height: 5rem;
+    width: 5rem;
+    margin: 20px 0;
+}
+.nextPage:hover {
+    background-color: rgb(184, 184, 184);
+}

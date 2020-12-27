@@ -1,6 +1,5 @@
 .gifItem {
     position: relative;
-    margin: 10px;
 }
 
 .gifItem h5 {
@@ -14,9 +13,7 @@
 }
 
 .gifItem img {
-    object-fit: cover;
-    width: 350px;
+    width: 100%;
     cursor: pointer;
-    height: 40vh;
     vertical-align: bottom;
 }

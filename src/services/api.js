@@ -1,6 +1,6 @@
 const { REACT_APP_API_KEY, REACT_APP_API_BASEURL } = process.env;
 
-export const getGifs = ({ keyword, limit = 25, page = 0 } = {}) => {
+export const getGifs = ({ keyword, limit = 10, page = 0 } = {}) => {
     const apiURL = `${REACT_APP_API_BASEURL}/gifs/search?api_key=${REACT_APP_API_KEY}&q=${keyword}&limit=${limit}&offset=${
         page * limit
     }&rating=g&lang=en`;

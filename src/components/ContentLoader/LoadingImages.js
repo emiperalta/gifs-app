@@ -3,6 +3,7 @@ import ContentLoader from 'react-content-loader';
 
 const LoadingImages = props => (
     <ContentLoader
+        speed={2}
         viewBox='0 0 400 160'
         height={160}
         width={400}

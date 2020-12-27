@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'wouter';
 
 import TrendingSearches from 'components/TrendingSearches/LazyTrending';
+import LoadingImages from 'components/ContentLoader/LoadingImages';
 import GifsList from 'components/GifsList/GifsList';
 import useGifs from 'hooks/useGifs';
 import './Home.css';
@@ -33,7 +34,7 @@ const Home = () => {
             </form>
 
             <h3 className='subtitle'>Last search</h3>
-            <GifsList gifs={gifs} />
+            {loading ? <LoadingImages /> : <GifsList gifs={gifs} />}
 
             <TrendingSearches />
         </>

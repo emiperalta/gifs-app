@@ -26,7 +26,7 @@ const Home = () => {
             <form onSubmit={submitHandler} className='searchForm'>
                 <input
                     type='text'
-                    placeholder='Santa Claus'
+                    placeholder='Search any gif...'
                     value={keyword}
                     onChange={inputChangeHandler}
                 />

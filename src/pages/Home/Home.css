@@ -1,11 +1,15 @@
 .searchForm {
-    margin-bottom: 25px;
+    margin: 25px 0;
 }
 .searchForm input,
 .searchForm button {
     padding: 10px;
     outline: none;
     font-size: 1.4rem;
+}
+
+.searchForm input {
+    width: 60%;
 }
 
 .searchForm button {
@@ -17,4 +21,10 @@
     margin: 35px 0;
     color: #8e9db4;
     text-decoration: underline;
+}
+
+@media screen and (min-width: 40rem) {
+    .searchForm input {
+        width: 270px;
+    }
 }

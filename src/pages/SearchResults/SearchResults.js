@@ -17,7 +17,7 @@ const SearchResults = ({ params: { keyword } }) => {
 
     const nextPageHandler = useCallback(
         debounce(() => setPage(prevPage => prevPage + 1), 200),
-        []
+        [setPage]
     );
 
     useEffect(() => {

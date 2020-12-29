@@ -1,7 +1,23 @@
+:root {
+    --grid-column: 400px;
+}
+
 .gifsList {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    grid-gap: 16px;
-    margin: 0 16px;
     min-height: 100vh;
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-column), 1fr));
+    grid-gap: 10px 10px;
+    margin: 0 16px;
+}
+
+@media screen and (max-width: 37.5rem) {
+    :root {
+        --grid-column: 280px;
+    }
+}
+
+@media screen and (max-width: 28rem) {
+    :root {
+        --grid-column: 260px;
+    }
 }

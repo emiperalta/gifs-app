@@ -37,3 +37,7 @@ span a:hover,
 span a:visited {
     color: #fff;
 }
+
+.centeredLoading {
+    width: auto;
+}

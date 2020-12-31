@@ -12,12 +12,18 @@
 
 @media screen and (max-width: 37.5rem) {
     :root {
-        --grid-column: 280px;
+        --grid-column: 270px;
     }
 }
 
 @media screen and (max-width: 28rem) {
     :root {
-        --grid-column: 260px;
+        --grid-column: 200px;
+    }
+}
+
+@media screen and (min-width: 37.5rem) {
+    :root {
+        --grid-column: 300px;
     }
 }

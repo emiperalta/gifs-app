@@ -23,8 +23,8 @@
     text-decoration: underline;
 }
 
-@media screen and (min-width: 40rem) {
+@media screen and (min-width: 37.5rem) {
     .searchForm input {
-        width: 270px;
+        width: 250px;
     }
 }

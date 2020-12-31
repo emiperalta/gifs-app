@@ -5,7 +5,7 @@ import { getGifs } from 'services/api';
 
 const INITIAL_PAGE = 0;
 
-const useGifs = ({ keyword } = { keyword: 'messi' }) => {
+const useGifs = ({ keyword } = { keyword: null }) => {
     const { gifs, setGifs } = useContext(GifsContext);
     const [page, setPage] = useState(INITIAL_PAGE);
     const [loading, setLoading] = useState(false);

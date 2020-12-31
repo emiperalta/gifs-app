@@ -1,40 +1,34 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 import { useLocation } from 'wouter';
 
-import TrendingSearches from 'components/TrendingSearches/LazyTrending';
+import useGifs from 'hooks/useGifs';
+import SearchForm from 'components/SearchForm/SearchForm';
 import LoadingImages from 'components/ContentLoader/LoadingImages';
 import GifsList from 'components/GifsList/GifsList';
-import useGifs from 'hooks/useGifs';
+import TrendingSearches from 'components/TrendingSearches/LazyTrending';
 import './Home.css';
 
 const Home = () => {
-    const [keyword, setKeyword] = useState('');
     const [path, pushTo] = useLocation();
     const { loading, gifs } = useGifs();
 
-    const inputChangeHandler = e => setKeyword(e.target.value);
-
-    const submitHandler = e => {
-        e.preventDefault();
-        keyword !== ''
-            ? pushTo(`/search/${keyword}`)
-            : console.log('empty input search');
-    };
+    const submitHandler = useCallback(
+        ({ keyword }) => {
+            keyword !== '' ? pushTo(`/search/${keyword}`) : pushTo(`/`);
+        },
+        [pushTo]
+    );
 
     return (
         <>
-            <form onSubmit={submitHandler} className='searchForm'>
-                <input
-                    type='text'
-                    placeholder='Search any gif...'
-                    value={keyword}
-                    onChange={inputChangeHandler}
-                />
-                <button>Search</button>
-            </form>
+            <SearchForm onSubmit={submitHandler} />
 
             <h3 className='subtitle'>Last search</h3>
-            {loading ? <LoadingImages /> : <GifsList gifs={gifs} />}
+            {loading ? (
+                <LoadingImages className='centeredLoading' />
+            ) : (
+                <GifsList gifs={gifs} />
+            )}
 
             <TrendingSearches />
         </>

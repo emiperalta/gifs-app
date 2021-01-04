@@ -38,6 +38,11 @@ span a:visited {
     color: #fff;
 }
 
-.centeredLoading {
-    width: auto;
+.centeredLoadingGifs,
+.centeredLoadingTrends {
+    width: 100%;
+}
+
+.centeredLoadingTrends {
+    margin-top: 20px;
 }

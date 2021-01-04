@@ -25,7 +25,7 @@ const Home = () => {
 
             <h3 className='subtitle'>Last search</h3>
             {loading ? (
-                <LoadingImages className='centeredLoading' />
+                <LoadingImages className='centeredLoadingGifs' />
             ) : (
                 <GifsList gifs={gifs} />
             )}

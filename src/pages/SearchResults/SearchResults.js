@@ -27,7 +27,7 @@ const SearchResults = ({ params: { keyword } }) => {
     return (
         <>
             {loading ? (
-                <LoadingImages className='centeredLoading' />
+                <LoadingImages className='centeredLoadingGifs' />
             ) : (
                 <>
                     <h3 className='searchWord'>{decodeURI(keyword)}</h3>

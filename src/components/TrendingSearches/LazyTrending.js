@@ -9,8 +9,14 @@ const LazyTrending = () => {
 
     return (
         <div ref={elementRef}>
-            <Suspense fallback={<LoadingTrends />}>
-                {isNear ? <TrendingSearches /> : <LoadingTrends />}
+            <Suspense
+                fallback={<LoadingTrends className='centeredLoadingTrends' />}
+            >
+                {isNear ? (
+                    <TrendingSearches />
+                ) : (
+                    <LoadingTrends className='centeredLoadingTrends' />
+                )}
             </Suspense>
         </div>
     );

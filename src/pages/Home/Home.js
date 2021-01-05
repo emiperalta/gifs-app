@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useLocation } from 'wouter';
+import { Helmet } from 'react-helmet';
 
 import useGifs from 'hooks/useGifs';
 import SearchForm from 'components/SearchForm/SearchForm';
@@ -21,6 +22,11 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Home | Giffes</title>
+                <meta name='description' content='Gifs app' />
+            </Helmet>
+
             <SearchForm onSubmit={submitHandler} />
 
             <h3 className='subtitle'>Last search</h3>

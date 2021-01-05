@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import debounce from 'just-debounce-it';
+import { Helmet } from 'react-helmet';
 
 import LoadingImages from 'components/ContentLoader/LoadingImages';
 import GifsList from 'components/GifsList/GifsList';
 import useGifs from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
-import useTitle from 'hooks/useTitle';
 import './SearchResults.css';
 
 const SearchResults = ({ params: { keyword } }) => {
@@ -15,8 +15,7 @@ const SearchResults = ({ params: { keyword } }) => {
         externalRef: loading ? null : externalRef,
         once: false,
     });
-    const title = gifs ? `${gifs.length} results of ${keyword}` : '';
-    useTitle({ title });
+    const title = gifs ? `${gifs.length} results of ${decodeURI(keyword)}` : '';
 
     const nextPageHandler = useCallback(
         debounce(() => setPage(prevPage => prevPage + 1), 200),
@@ -30,9 +29,20 @@ const SearchResults = ({ params: { keyword } }) => {
     return (
         <>
             {loading ? (
-                <LoadingImages className='centeredLoadingGifs' />
+                <>
+                    <Helmet>
+                        <title>Loading gifs...</title>
+                        <meta name='description' content='Loading gifs' />
+                    </Helmet>
+                    <LoadingImages className='centeredLoadingGifs' />
+                </>
             ) : (
                 <>
+                    <Helmet>
+                        <title>{title} | Giffes</title>
+                        <meta name='description' content={title} />
+                    </Helmet>
+
                     <h3 className='searchWord'>{decodeURI(keyword)}</h3>
                     <GifsList gifs={gifs} />
 

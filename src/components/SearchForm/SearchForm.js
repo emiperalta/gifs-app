@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './SearchForm.css';
+
 const SearchForm = ({ onSubmit }) => {
     const [keyword, setKeyword] = useState('');
 

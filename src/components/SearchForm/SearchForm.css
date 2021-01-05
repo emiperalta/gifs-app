@@ -1,0 +1,24 @@
+.searchForm {
+    margin: 25px 0;
+}
+.searchForm input,
+.searchForm button {
+    padding: 7px;
+    outline: none;
+    font-family: 'Hind Siliguri', sans-serif !important;
+    font-size: 1.4rem;
+}
+
+.searchForm input {
+    width: 60%;
+}
+
+.searchForm button {
+    margin-left: 5px;
+}
+
+@media screen and (min-width: 37.5rem) {
+    .searchForm input {
+        width: 250px;
+    }
+}

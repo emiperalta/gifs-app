@@ -5,6 +5,7 @@ import LoadingImages from 'components/ContentLoader/LoadingImages';
 import GifsList from 'components/GifsList/GifsList';
 import useGifs from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
+import useTitle from 'hooks/useTitle';
 import './SearchResults.css';
 
 const SearchResults = ({ params: { keyword } }) => {
@@ -14,6 +15,8 @@ const SearchResults = ({ params: { keyword } }) => {
         externalRef: loading ? null : externalRef,
         once: false,
     });
+    const title = gifs ? `${gifs.length} results of ${keyword}` : '';
+    useTitle({ title });
 
     const nextPageHandler = useCallback(
         debounce(() => setPage(prevPage => prevPage + 1), 200),

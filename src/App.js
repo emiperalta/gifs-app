@@ -5,6 +5,7 @@ import { GifsContextProvider } from './context/GifsContext';
 import Home from './pages/Home/Home';
 import SearchResults from './pages/SearchResults/SearchResults';
 import Details from './pages/Details/Details';
+import Error from './pages/Error/Error';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                                 component={SearchResults}
                             />
                             <Route path='/gif/:id' component={Details} />
+                            <Route path='/404' component={Error} />
                         </Switch>
                     </GifsContextProvider>
                 </section>

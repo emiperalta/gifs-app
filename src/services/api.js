@@ -21,6 +21,21 @@ export const getGifs = ({ keyword, limit = 10, page = 0 } = {}) => {
         });
 };
 
+export const getSingleGif = ({ id }) => {
+    const apiURL = `${REACT_APP_API_BASEURL}/gifs/${id}?api_key=${REACT_APP_API_KEY}`;
+
+    return fetch(apiURL)
+        .then(res => res.json())
+        .then(response => {
+            const { data } = response;
+
+            const { images, title, id } = data;
+            const { url } = images.downsized_medium;
+
+            return { id, title, url };
+        });
+};
+
 export const getTrendingTerms = () => {
     const apiURL = `${REACT_APP_API_BASEURL}/trending/searches?api_key=${REACT_APP_API_KEY}`;
 

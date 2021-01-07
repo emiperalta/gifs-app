@@ -5,10 +5,11 @@ export const getGifs = ({
     limit = 10,
     page = 0,
     rating = 'g',
+    lang = 'en',
 } = {}) => {
     const apiURL = `${REACT_APP_API_BASEURL}/gifs/search?api_key=${REACT_APP_API_KEY}&q=${keyword}&limit=${limit}&offset=${
         page * limit
-    }&rating=${rating}&lang=en`;
+    }&rating=${rating}&lang=${lang}`;
 
     return fetch(apiURL)
         .then(res => res.json())

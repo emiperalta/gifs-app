@@ -11,7 +11,24 @@
 }
 
 .searchForm input {
-    width: 40%;
+    width: 60%;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.searchForm button {
+    width: 30%;
+}
+
+.searchForm select {
+    margin-top: 5px;
+    width: 20%;
+    padding: 3px;
+    border-radius: 10px;
 }
 
 .searchForm button,
@@ -19,29 +36,22 @@
     margin-left: 5px;
 }
 
-.searchForm button {
-    width: 23%;
-}
-.searchForm select {
-    width: 27%;
-}
-
-@media screen and (min-width: 60rem) {
+@media screen and (min-width: 40rem) {
     .searchForm input {
         width: 270px;
     }
-}
-
-@media screen and (min-width: 40rem) {
-    .searchForm button {
-        width: 98px;
-    }
     .searchForm select {
-        width: 50px;
+        width: 90px;
     }
 }
 
 @media screen and (min-width: 28rem) {
+    .searchForm button {
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 35rem) {
     .searchForm select {
         width: 77px;
     }

@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocation } from 'wouter';
 
+import useForm from './hook';
 import './SearchForm.css';
 
 const RATING = ['g', 'pg', 'pg-13', 'r'];
+const LANGUAGE = ['en', 'es', 'ja'];
 
-const SearchForm = ({ initKeyword = '', initRating }) => {
-    const [keyword, setKeyword] = useState(decodeURI(initKeyword));
-    const [rating, setRating] = useState(initRating);
+const SearchForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' }) => {
+    const { keyword, rating, lang, updateKeyword, updateRating, updateLang } = useForm({
+        initKeyword,
+        initRating,
+        initLang,
+    });
+
     const [path, pushTo] = useLocation();
 
-    const inputChangeHandler = e => setKeyword(e.target.value);
+    const inputChangeHandler = e => updateKeyword(e.target.value);
 
-    const ratingChangeHandler = e => setRating(e.target.value);
+    const ratingChangeHandler = e => updateRating(e.target.value);
+
+    const langChangeHandler = e => updateLang(e.target.value);
 
     const submitHandler = e => {
         e.preventDefault();
-        keyword === '' ? pushTo('/') : pushTo(`/search/${keyword}/${rating}`);
+        keyword === '' ? pushTo('/') : pushTo(`/search/${keyword}/${rating}/${lang}`);
     };
 
     return (
@@ -27,14 +35,28 @@ const SearchForm = ({ initKeyword = '', initRating }) => {
                 value={keyword}
                 onChange={inputChangeHandler}
             />
+
             <button>Search</button>
-            <select onChange={ratingChangeHandler} value={rating}>
-                {RATING.map(rating => (
-                    <option key={rating} value={rating}>
-                        {rating}
-                    </option>
-                ))}
-            </select>
+
+            <div className='filters'>
+                <select onChange={ratingChangeHandler} value={rating}>
+                    <option disabled>Rating</option>
+                    {RATING.map(rating => (
+                        <option key={rating} value={rating}>
+                            {rating}
+                        </option>
+                    ))}
+                </select>
+
+                <select onChange={langChangeHandler} value={lang}>
+                    <option disabled>Language</option>
+                    {LANGUAGE.map(lang => (
+                        <option key={lang} value={lang}>
+                            {lang}
+                        </option>
+                    ))}
+                </select>
+            </div>
         </form>
     );
 };

@@ -1,5 +1,4 @@
-import React, { useCallback } from 'react';
-import { useLocation } from 'wouter';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import useGifs from 'hooks/useGifs';
@@ -10,15 +9,7 @@ import TrendingSearches from 'components/TrendingSearches/LazyTrending';
 import './Home.css';
 
 const Home = () => {
-    const [path, pushTo] = useLocation();
     const { loading, gifs } = useGifs();
-
-    const submitHandler = useCallback(
-        ({ keyword }) => {
-            keyword !== '' ? pushTo(`/search/${keyword}`) : pushTo(`/`);
-        },
-        [pushTo]
-    );
 
     return (
         <>
@@ -27,7 +18,7 @@ const Home = () => {
                 <meta name='description' content='Gifs app' />
             </Helmet>
 
-            <SearchForm onSubmit={submitHandler} />
+            <SearchForm />
 
             <h3 className='subtitle'>Last search</h3>
             {loading ? (

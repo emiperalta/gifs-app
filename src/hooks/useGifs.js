@@ -5,7 +5,7 @@ import { getGifs } from 'services/api';
 
 const INITIAL_PAGE = 0;
 
-const useGifs = ({ keyword } = { keyword: null }) => {
+const useGifs = ({ keyword, rating } = { keyword: null }) => {
     const { gifs, setGifs } = useContext(GifsContext);
     const [page, setPage] = useState(INITIAL_PAGE);
     const [loading, setLoading] = useState(false);
@@ -13,27 +13,28 @@ const useGifs = ({ keyword } = { keyword: null }) => {
 
     const keywordToUse = keyword || localStorage.getItem('lastKeyword');
 
+    // effect for get gifs
     useEffect(() => {
         setLoading(true);
 
-        getGifs({ keyword: keywordToUse }).then(gifs => {
+        getGifs({ keyword: keywordToUse, rating }).then(gifs => {
             setGifs(gifs);
             setLoading(false);
             localStorage.setItem('lastKeyword', keyword);
         });
-    }, [keyword, keywordToUse, setGifs]);
+    }, [keyword, keywordToUse, setGifs, rating]);
 
-    //effect for pagination
+    // effect for pagination
     useEffect(() => {
         if (page === INITIAL_PAGE) return;
 
         setLoadingNextPage(true);
 
-        getGifs({ keyword: keywordToUse, page }).then(nextGifs => {
+        getGifs({ keyword: keywordToUse, page, rating }).then(nextGifs => {
             setGifs(prevGifs => prevGifs.concat(nextGifs));
             setLoadingNextPage(false);
         });
-    }, [keywordToUse, page, setGifs]);
+    }, [keywordToUse, page, setGifs, rating]);
 
     return {
         loading,

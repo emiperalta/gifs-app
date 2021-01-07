@@ -30,7 +30,7 @@ const Detail = ({ params }) => {
     return (
         <>
             <Helmet>
-                <title>{title} || Giffes</title>
+                <title>{title} | Giffes</title>
             </Helmet>
             <Gif gif={gif} detail={detail} />
         </>

@@ -2,23 +2,47 @@
     margin: 25px 0;
 }
 .searchForm input,
-.searchForm button {
-    padding: 7px;
+.searchForm button,
+.searchForm select {
+    padding: 4.5px;
     outline: none;
     font-family: 'Hind Siliguri', sans-serif !important;
     font-size: 1.4rem;
 }
 
 .searchForm input {
-    width: 60%;
+    width: 40%;
 }
 
-.searchForm button {
+.searchForm button,
+.searchForm select {
     margin-left: 5px;
 }
 
-@media screen and (min-width: 37.5rem) {
+.searchForm button {
+    width: 23%;
+}
+.searchForm select {
+    width: 27%;
+}
+
+@media screen and (min-width: 60rem) {
     .searchForm input {
-        width: 250px;
+        width: 270px;
+    }
+}
+
+@media screen and (min-width: 40rem) {
+    .searchForm button {
+        width: 98px;
+    }
+    .searchForm select {
+        width: 50px;
+    }
+}
+
+@media screen and (min-width: 28rem) {
+    .searchForm select {
+        width: 77px;
     }
 }

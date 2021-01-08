@@ -28,7 +28,7 @@ const reducer = (state, action) => {
     }
 };
 
-const useForm = ({ initKeyword, initRating, initLang }) => {
+const useForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' } = {}) => {
     const [state, dispatch] = useReducer(reducer, {
         keyword: decodeURI(initKeyword),
         rating: initRating,

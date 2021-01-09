@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 
-import { getTrendingTerms } from 'services/api';
+import { getTrendingTerms } from 'services/giphyApi';
 import './TrendingSearches.css';
 
 const TrendingSearches = () => {

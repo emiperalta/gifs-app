@@ -6,7 +6,7 @@ import useUser from 'hooks/useUser';
 import './Header.css';
 
 const Header = () => {
-    const { isLogged, login, logout } = useUser();
+    const { isLogged, logout } = useUser();
 
     return (
         <header className='header'>

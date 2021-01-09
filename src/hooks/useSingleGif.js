@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import useGifs from './useGifs';
-import { getSingleGif } from 'services/api';
+import { getSingleGif } from 'services/giphyApi';
 
 const useSingleGif = ({ id }) => {
     const { gifs } = useGifs();

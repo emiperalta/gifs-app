@@ -5,9 +5,12 @@ import UserContext from 'context/UserContext';
 const useUser = () => {
     const { jwt, setJwt } = useContext(UserContext);
 
-    const login = useCallback(() => {
-        setJwt('test');
-    }, [setJwt]);
+    const login = useCallback(
+        ({ username, password }) => {
+            setJwt('test');
+        },
+        [setJwt]
+    );
 
     const logout = useCallback(() => {
         setJwt(null);

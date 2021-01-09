@@ -16,7 +16,7 @@ const LoginForm = () => {
 
     const submitHandler = e => {
         e.preventDefault();
-        login();
+        login({ username, password });
     };
 
     const usernameChangeHandler = e => setUsername(e.target.value);

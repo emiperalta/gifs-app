@@ -14,7 +14,7 @@ const SearchForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' }) => 
         initLang,
     });
 
-    const [path, pushTo] = useLocation();
+    const [, navigateTo] = useLocation();
 
     const inputChangeHandler = e => updateKeyword(e.target.value);
 
@@ -24,7 +24,9 @@ const SearchForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' }) => 
 
     const submitHandler = e => {
         e.preventDefault();
-        keyword === '' ? pushTo('/') : pushTo(`/search/${keyword}/${rating}/${lang}`);
+        keyword === ''
+            ? navigateTo('/')
+            : navigateTo(`/search/${keyword}/${rating}/${lang}`);
     };
 
     return (

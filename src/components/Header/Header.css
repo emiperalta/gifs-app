@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header a {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+.header a:visited {
+    color: #fff;
+}
+
+.header button {
+    text-decoration: none;
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    height: 26px;
+}

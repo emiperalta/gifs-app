@@ -1,41 +1,59 @@
 import { RequestHandler } from 'express';
 import { compare, hash } from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-
-import 'dotenv/config';
 
 import User from '../models/User';
+import { generateToken } from '../utils/tokenManagment';
+import { favs } from '../utils/favs';
 
 export const postLogin: RequestHandler = async (req, res) => {
     try {
         const { username, password } = req.body;
 
-        const user = await User.find({ username });
+        const user = await User.findOne({ username });
 
         if (!user) {
-            res.status(403).json({ error: 'User not found' });
-        } else if (!compare(password, user.password)) {
-            res.status(403).json({ error: 'User or password incorrect' });
+            return res.status(403).json({ error: 'User not found' });
         }
 
-        const token = jwt.sign({ user: user.username }, process.env.JWT_KEY!, {
-            expiresIn: '1h',
-        });
+        const matchPassword = await compare(password, user.password);
+        if (!matchPassword)
+            return res.status(403).json({
+                error: 'The username or password are incorrect',
+            });
 
-        res.status(201).json({ token });
+        const token = generateToken(user);
+
+        return res.status(201).json({ user, token });
     } catch (err) {
-        res.status(400).json({ error: err.msg });
+        return res.status(400).json({ error: err.message });
     }
 };
 
-export const postRegister: RequestHandler = (req, res) => {
+export const postRegister: RequestHandler = async (req, res) => {
     try {
         const { username, password } = req.body;
 
-        // TODO: finish register
+        const userAlreadyExist = await User.find({ username });
 
-        res.status(201).json();
+        if (userAlreadyExist != '')
+            return res.status(409).json({ error: 'User already registered' });
+        else {
+            const hashedPassword = await hash(password, 10);
+
+            const user = new User({
+                username,
+                password: hashedPassword,
+            });
+
+            favs[username] = []; // to allow save user favs
+
+            const newUser = await user.save();
+
+            const token = generateToken(newUser);
+
+            return res.status(201).json({ newUser, token });
+        }
     } catch (err) {
-        res.status(400).json({ error: err.msg });
+        return res.status(400).json({ error: err.message });
     }
 };

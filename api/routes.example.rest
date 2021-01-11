@@ -1,0 +1,35 @@
+@baseURL = http://localhost:5000/api
+
+### POST Login
+POST {{baseURL}}/login
+Content-Type: application/json
+
+{
+    "username": "test",
+    "password": "test"
+}
+
+### POST Register
+POST {{baseURL}}/register
+Content-Type: application/json
+
+{
+    "username": "test",
+    "password": "test"
+}
+
+### GET ALL Favs
+GET {{baseURL}}/favs/
+Authorization: Bearer <token>
+
+### POST ONE Fav
+POST {{baseURL}}/favs/abc123
+Content-Type: application/json
+Authorization: Bearer <token>
+
+{    
+}
+
+### DELETE ONE Fav
+DELETE  {{baseURL}}/favs/abc123
+Authorization: Bearer <token>

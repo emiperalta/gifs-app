@@ -1,32 +1,66 @@
 import { RequestHandler } from 'express';
 
-import User from '../models/User';
-import Fav from '../models/Fav';
+import { favs } from '../utils/favs';
+import { verifyToken } from '../utils/tokenManagment';
 
 export const getFavs: RequestHandler = async (req, res) => {
     try {
-        const userFavs = await Fav.find();
+        const currentUser: any = verifyToken(req.token);
 
-        // TODO: decide how to manage favs
+        const { username } = currentUser;
 
-        res.status(200).json(userFavs);
+        const userFavs = favs[username];
+
+        return res.status(200).json({ userFavs });
     } catch (err) {
-        res.status(404).json({ error: err.msg });
+        return res.status(404).json({ error: err.message });
     }
 };
 
 export const postFav: RequestHandler = (req, res) => {
     try {
-        res.json('Working OK!!! 😃');
+        const currentUser: any = verifyToken(req.token);
+
+        const { id } = req.params;
+        const { username } = currentUser;
+
+        const alreadyExist = favs[username].find((favId: string) => favId === id);
+
+        if (!alreadyExist) {
+            favs[username].push(id);
+        }
+
+        console.log({
+            alreadyExist,
+            favs: favs[username],
+            username,
+        });
+
+        const newFav = favs[username];
+
+        return res.status(201).json({ newFav });
     } catch (err) {
-        res.status(404).json({ error: err.msg });
+        return res.status(404).json({ error: err.message });
     }
 };
 
 export const deleteFav: RequestHandler = (req, res) => {
     try {
-        res.json('Working OK!!! 😃');
+        const currentUser: any = verifyToken(req.token);
+
+        const { id } = req.params;
+        const { username } = currentUser;
+
+        const alreadyExist = favs[username].find((favId: string) => favId === id);
+
+        if (alreadyExist) {
+            favs[username] = favs[username].filter((favId: string) => favId !== id);
+
+            const deletedFav = favs[username];
+
+            return res.status(200).json({ deletedFav });
+        } else return res.sendStatus(404);
     } catch (err) {
-        res.status(404).json({ error: err.msg });
+        return res.status(404).json({ error: err.message });
     }
 };

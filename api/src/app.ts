@@ -12,7 +12,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', authRoutes);
-app.use('/favs', userRoutes);
+app.use('/api', authRoutes);
+app.use('/api/favs', userRoutes);
 
 export default app;

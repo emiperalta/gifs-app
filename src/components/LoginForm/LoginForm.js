@@ -8,7 +8,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
 
     const [, navigateTo] = useLocation();
-    const { isLogged, login } = useUser();
+    const { isLogged, login, loginIsLoading, loginHasError } = useUser();
 
     useEffect(() => {
         if (isLogged) navigateTo('/');
@@ -23,21 +23,30 @@ const LoginForm = () => {
     const passwordChangeHandler = e => setPassword(e.target.value);
 
     return (
-        <form onSubmit={submitHandler}>
-            <input
-                type='text'
-                placeholder='Username'
-                value={username}
-                onChange={usernameChangeHandler}
-            />
-            <input
-                type='password'
-                placeholder='Password'
-                value={password}
-                onChange={passwordChangeHandler}
-            />
-            <button>Login</button>
-        </form>
+        <>
+            {loginIsLoading ? (
+                <strong>Loading...</strong>
+            ) : (
+                <div>
+                    <form onSubmit={submitHandler}>
+                        <input
+                            type='text'
+                            placeholder='Username'
+                            value={username}
+                            onChange={usernameChangeHandler}
+                        />
+                        <input
+                            type='password'
+                            placeholder='Password'
+                            value={password}
+                            onChange={passwordChangeHandler}
+                        />
+                        <button>Login</button>
+                    </form>
+                </div>
+            )}
+            {loginHasError && <strong>Credentials are wrong</strong>}
+        </>
     );
 };
 

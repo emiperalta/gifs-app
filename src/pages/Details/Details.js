@@ -7,7 +7,7 @@ import useSingleGif from 'hooks/useSingleGif';
 import LoadingImages from 'components/ContentLoader/LoadingImages';
 
 const Detail = ({ params }) => {
-    const detail = true;
+    const detail = true; // passed as prop to the Gif component for styling purposes
 
     const { id } = params;
     const { gif, isLoading, isError } = useSingleGif({ id });

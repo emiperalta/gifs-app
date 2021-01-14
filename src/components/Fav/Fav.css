@@ -1,0 +1,23 @@
+.gif-fav {
+    position: absolute;
+    right: 7px;
+    top: 6px;
+    z-index: 1;
+}
+
+.gif-fav button {
+    background: rgb(43, 43, 43);
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.gif-fav button:hover {
+    background: rgb(85, 85, 85);
+}
+
+.gif-fav span {
+    font-size: 1.9rem;
+    color: rgb(255, 255, 255);
+}

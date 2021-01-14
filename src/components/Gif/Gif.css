@@ -22,8 +22,13 @@
     object-fit: contain;
     vertical-align: top;
 }
+
 .gifItemDetail img {
     cursor: initial;
+}
+
+.gifItem img:hover {
+    outline: #fff 1px solid;
 }
 
 @media screen and (min-width: 700px) {

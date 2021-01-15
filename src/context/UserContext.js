@@ -5,6 +5,7 @@ const Context = createContext({});
 
 export const UserContextProvider = ({ children }) => {
     const [favs, setFavs] = useState([]);
+    const [user, setUser] = useState(() => window.sessionStorage.getItem('user'));
     const [jwt, setJwt] = useState(() => window.sessionStorage.getItem('jwt'));
 
     useEffect(() => {
@@ -16,7 +17,7 @@ export const UserContextProvider = ({ children }) => {
     }, [jwt]);
 
     return (
-        <Context.Provider value={{ jwt, setJwt, favs, setFavs }}>
+        <Context.Provider value={{ jwt, setJwt, favs, setFavs, user, setUser }}>
             {children}
         </Context.Provider>
     );

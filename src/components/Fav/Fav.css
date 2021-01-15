@@ -12,9 +12,15 @@
     outline: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
 }
 .gif-fav button:hover {
     background: rgb(85, 85, 85);
+}
+
+.gif-fav svg {
+    margin-top: 5px;
 }
 
 .not-faved,
@@ -23,8 +29,8 @@
     transition: all 0.3s ease;
 }
 .not-faved {
-    color: rgb(255, 255, 255);
+    fill: rgb(252, 232, 232);
 }
 .faved {
-    color: rgb(255, 0, 0);
+    fill: rgb(255, 0, 0);
 }

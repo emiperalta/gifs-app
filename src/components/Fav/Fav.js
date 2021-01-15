@@ -20,13 +20,16 @@ const Fav = ({ id }) => {
     return (
         <div className='gif-fav'>
             <button onClick={favHandler}>
-                <span
-                    aria-label='fav gif'
-                    role='img'
+                <svg
+                    id='i-heart'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 32 32'
+                    fill='#fff'
+                    stroke='#000'
                     className={isFaved ? 'faved' : 'not-faved'}
                 >
-                    ❤
-                </span>
+                    <path d='M4 16 C1 12 2 6 7 4 12 2 15 6 16 8 17 6 21 2 26 4 31 6 31 12 28 16 25 20 16 28 16 28 16 28 7 20 4 16 Z' />
+                </svg>
             </button>
         </div>
     );

@@ -10,34 +10,45 @@ import {
 } from 'services/userApi';
 
 const useUser = () => {
-    const { jwt, setJwt, favs, setFavs } = useContext(UserContext);
+    const { jwt, setJwt, favs, setFavs, user, setUser } = useContext(UserContext);
     const [state, setState] = useState({ loading: false, error: false });
 
     // user login
     const login = useCallback(
         ({ username, password }) => {
             setState({ loading: true, error: false });
+
             userLogin({ username, password })
                 .then(jwt => {
-                    setState({ loading: false, error: false });
                     setJwt(jwt);
+                    setState({ loading: false, error: false });
+                    setUser(username);
+
+                    window.sessionStorage.setItem('user', username);
                     window.sessionStorage.setItem('jwt', jwt);
                 })
                 .catch(err => {
                     setState({ loading: false, error: true });
+
+                    window.sessionStorage.removeItem('user');
                     window.sessionStorage.removeItem('jwt');
+
                     console.error(err);
                 });
         },
-        [setJwt]
+        [setJwt, setUser]
     );
 
     // user logout
     const logout = useCallback(() => {
         setJwt(null);
-        window.sessionStorage.removeItem('jwt');
-    }, [setJwt]);
+        setUser('');
 
+        window.sessionStorage.removeItem('user');
+        window.sessionStorage.removeItem('jwt');
+    }, [setJwt, setUser]);
+
+    // get all faved gifs
     const getFavs = useCallback(() => {
         getFavsService({ jwt })
             .then(favs => setFavs(favs))
@@ -54,6 +65,7 @@ const useUser = () => {
         [jwt, setFavs]
     );
 
+    // delete gif from favs
     const deleteFav = useCallback(
         ({ id }) => {
             deleteFavService({ id, jwt })
@@ -69,6 +81,7 @@ const useUser = () => {
         loginIsLoading: state.loading,
         loginHasError: state.error,
         logout,
+        user,
         getFavs,
         addFav,
         deleteFav,

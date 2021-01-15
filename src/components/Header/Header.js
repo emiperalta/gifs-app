@@ -6,12 +6,15 @@ import useUser from 'hooks/useUser';
 import './Header.css';
 
 const Header = () => {
-    const { isLogged, logout } = useUser();
+    const { isLogged, logout, user } = useUser();
 
     return (
         <header className='header'>
             {isLogged ? (
-                <button onClick={logout}>Logout</button>
+                <>
+                    <span>{user}</span>
+                    <button onClick={logout}>Logout</button>
+                </>
             ) : (
                 <Link to='/login'>Login</Link>
             )}

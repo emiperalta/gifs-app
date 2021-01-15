@@ -3,6 +3,8 @@ import { useLocation } from 'wouter';
 
 import useUser from 'hooks/useUser';
 
+import './LoginForm.css';
+
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -25,10 +27,10 @@ const LoginForm = () => {
     return (
         <>
             {loginIsLoading ? (
-                <strong>Loading...</strong>
+                <h5>Loading...</h5>
             ) : (
-                <div>
-                    <form onSubmit={submitHandler}>
+                <div className='loginForm'>
+                    <form onSubmit={submitHandler} className='form'>
                         <input
                             type='text'
                             placeholder='Username'
@@ -45,7 +47,7 @@ const LoginForm = () => {
                     </form>
                 </div>
             )}
-            {loginHasError && <strong>Credentials are wrong</strong>}
+            {loginHasError && <h5>Credentials are wrong</h5>}
         </>
     );
 };

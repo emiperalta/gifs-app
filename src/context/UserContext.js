@@ -1,11 +1,25 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import { getFavsService } from 'services/userApi';
 
 const Context = createContext({});
 
 export const UserContextProvider = ({ children }) => {
-    const [jwt, setJwt] = useState(null);
+    const [favs, setFavs] = useState([]);
+    const [jwt, setJwt] = useState(() => window.sessionStorage.getItem('jwt'));
 
-    return <Context.Provider value={{ jwt, setJwt }}>{children}</Context.Provider>;
+    useEffect(() => {
+        if (!jwt) setFavs([]);
+
+        getFavsService({ jwt })
+            .then(userFavs => setFavs(userFavs))
+            .catch(err => console.error(err));
+    }, [jwt]);
+
+    return (
+        <Context.Provider value={{ jwt, setJwt, favs, setFavs }}>
+            {children}
+        </Context.Provider>
+    );
 };
 
 export default Context;

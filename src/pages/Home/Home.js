@@ -6,6 +6,7 @@ import SearchForm from 'components/SearchForm/SearchForm';
 import LoadingImages from 'components/ContentLoader/LoadingImages';
 import GifsList from 'components/GifsList/GifsList';
 import TrendingSearches from 'components/TrendingSearches/LazyTrending';
+
 import './Home.css';
 
 const Home = () => {

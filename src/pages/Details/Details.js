@@ -3,8 +3,8 @@ import { Redirect } from 'wouter';
 import { Helmet } from 'react-helmet';
 
 import Gif from 'components/Gif/Gif';
-import useSingleGif from 'hooks/useSingleGif';
 import LoadingImages from 'components/ContentLoader/LoadingImages';
+import useSingleGif from 'hooks/useSingleGif';
 
 const Detail = ({ params }) => {
     const detail = true; // passed as prop to the Gif component for styling purposes

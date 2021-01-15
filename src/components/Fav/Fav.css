@@ -17,7 +17,14 @@
     background: rgb(85, 85, 85);
 }
 
-.gif-fav span {
+.not-faved,
+.faved {
     font-size: 1.9rem;
+    transition: all 0.3s ease;
+}
+.not-faved {
     color: rgb(255, 255, 255);
+}
+.faved {
+    color: rgb(255, 0, 0);
 }

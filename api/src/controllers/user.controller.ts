@@ -30,12 +30,6 @@ export const postFav: RequestHandler = (req, res) => {
             favs[username].push(id);
         }
 
-        console.log({
-            alreadyExist,
-            favs: favs[username],
-            username,
-        });
-
         const newFav = favs[username];
 
         return res.status(201).json({ newFav });
@@ -56,9 +50,9 @@ export const deleteFav: RequestHandler = (req, res) => {
         if (alreadyExist) {
             favs[username] = favs[username].filter((favId: string) => favId !== id);
 
-            const deletedFav = favs[username];
+            const favDeleted = favs[username];
 
-            return res.status(200).json({ deletedFav });
+            return res.status(200).json({ favDeleted });
         } else return res.sendStatus(404);
     } catch (err) {
         return res.status(404).json({ error: err.message });

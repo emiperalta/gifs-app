@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Gif from '../Gif/Gif';
+
 import './GifsList.css';
 
 const GifsList = ({ gifs }) => {

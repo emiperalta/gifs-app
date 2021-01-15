@@ -6,17 +6,25 @@ import useUser from 'hooks/useUser';
 import './Fav.css';
 
 const Fav = ({ id }) => {
-    const { isLogged } = useUser();
+    const { isLogged, addFav, deleteFav, favs } = useUser();
     const [, navigateTo] = useLocation();
 
+    const isFaved = favs.some(favId => favId === id);
+
     const favHandler = () => {
-        isLogged ? alert(id) : navigateTo('/login');
+        if (isLogged) {
+            isFaved ? deleteFav({ id }) : addFav({ id });
+        } else navigateTo('/login');
     };
 
     return (
         <div className='gif-fav'>
             <button onClick={favHandler}>
-                <span aria-label='fav gif' role='img'>
+                <span
+                    aria-label='fav gif'
+                    role='img'
+                    className={isFaved ? 'faved' : 'not-faved'}
+                >
                     ❤
                 </span>
             </button>

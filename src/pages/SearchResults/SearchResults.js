@@ -7,6 +7,7 @@ import SearchForm from 'components/SearchForm/SearchForm';
 import GifsList from 'components/GifsList/GifsList';
 import useGifs from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
+
 import './SearchResults.css';
 
 const SearchResults = ({ params: { keyword, rating, lang } }) => {

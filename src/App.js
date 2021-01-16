@@ -5,10 +5,12 @@ import { GifsContextProvider } from 'context/GifsContext';
 import { UserContextProvider } from 'context/UserContext';
 
 import Header from 'components/Header/Header';
+
 import Home from 'pages/Home/Home';
 import SearchResults from 'pages/SearchResults/SearchResults';
 import Details from 'pages/Details/Details';
 import Login from 'pages/Login/Login';
+import Register from 'pages/Register/Register';
 import Error from 'pages/Error/Error';
 
 import './App.css';
@@ -34,6 +36,7 @@ function App() {
                                 />
                                 <Route path='/gif/:id' component={Details} />
                                 <Route path='/login' component={Login} />
+                                <Route path='/register' component={Register} />
                                 <Route path='/404' component={Error} />
                             </Switch>
                         </GifsContextProvider>

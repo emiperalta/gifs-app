@@ -1,26 +1,26 @@
-.loginFormDiv {
+.registerFormDiv {
     background-color: rgb(55, 60, 71);
     padding: 30px;
 }
 
-.loginForm {
+.registerForm {
     display: flex;
     flex-direction: column;
 }
 
-.loginForm input {
+.registerForm input {
     margin-bottom: 15px;
     outline: none;
     line-height: 1.9;
 }
 
-.loginForm button {
+.registerForm button {
     width: 80px;
     margin: 15px auto 0 auto;
 }
 
-.loginForm input,
-.loginForm button {
+.registerForm input,
+.registerForm button {
     padding: 4.5px;
     outline: none;
     font-family: 'Hind Siliguri', sans-serif !important;
@@ -28,11 +28,11 @@
 }
 
 @media screen and (min-width: 34rem) {
-    .loginFormDiv {
+    .registerFormDiv {
         margin: 0 auto;
         width: 375px;
     }
-    .loginForm input {
+    .registerForm input {
         width: 315px;
     }
 }

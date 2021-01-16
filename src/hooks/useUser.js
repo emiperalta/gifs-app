@@ -4,13 +4,16 @@ import UserContext from 'context/UserContext';
 
 import {
     userLogin,
+    userRegister,
     addFavService,
     getFavsService,
     deleteFavService,
 } from 'services/userApi';
 
 const useUser = () => {
-    const { jwt, setJwt, favs, setFavs, user, setUser } = useContext(UserContext);
+    const { jwt, setJwt, favs, setFavs, userLoggedIn, setUserLoggedIn } = useContext(
+        UserContext
+    );
     const [state, setState] = useState({ loading: false, error: false });
 
     // user login
@@ -22,9 +25,9 @@ const useUser = () => {
                 .then(jwt => {
                     setJwt(jwt);
                     setState({ loading: false, error: false });
-                    setUser(username);
+                    setUserLoggedIn(username);
 
-                    window.sessionStorage.setItem('user', username);
+                    window.sessionStorage.setItem('user', username); // to show the user logged in
                     window.sessionStorage.setItem('jwt', jwt);
                 })
                 .catch(err => {
@@ -36,17 +39,31 @@ const useUser = () => {
                     console.error(err);
                 });
         },
-        [setJwt, setUser]
+        [setJwt, setUserLoggedIn]
     );
 
     // user logout
     const logout = useCallback(() => {
         setJwt(null);
-        setUser('');
+        setUserLoggedIn('');
 
         window.sessionStorage.removeItem('user');
         window.sessionStorage.removeItem('jwt');
-    }, [setJwt, setUser]);
+    }, [setJwt, setUserLoggedIn]);
+
+    // user register
+    const register = useCallback(({ username, password }) => {
+        setState({ loading: true, error: false });
+
+        userRegister({ username, password })
+            .then(res => {
+                setState({ loading: false, error: false });
+            })
+            .catch(err => {
+                setState({ loading: false, error: true });
+                console.error(err);
+            });
+    }, []);
 
     // get all faved gifs
     const getFavs = useCallback(() => {
@@ -81,7 +98,10 @@ const useUser = () => {
         loginIsLoading: state.loading,
         loginHasError: state.error,
         logout,
-        user,
+        register,
+        registerIsLoading: state.loading,
+        registerHasError: state.error,
+        userLoggedIn,
         getFavs,
         addFav,
         deleteFav,

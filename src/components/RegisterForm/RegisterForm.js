@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 
 import useUser from 'hooks/useUser';
 
-import './LoginForm.css';
+import './RegisterForm.css';
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const [, navigateTo] = useLocation();
-    const { isLogged, login, loginIsLoading, loginHasError } = useUser();
+
+    const { isLogged, register, registerIsLoading, registerHasError } = useUser();
 
     useEffect(() => {
-        if (isLogged) navigateTo('/');
+        if (isLogged) return navigateTo('/');
     }, [isLogged, navigateTo]);
 
     const submitHandler = e => {
         e.preventDefault();
-        login({ username, password });
+        register({ username, password });
     };
 
     const usernameChangeHandler = e => setUsername(e.target.value);
@@ -26,35 +27,35 @@ const LoginForm = () => {
 
     return (
         <>
-            {loginIsLoading ? (
+            {registerIsLoading ? (
                 <h5>Loading...</h5>
             ) : (
-                <div className='loginFormDiv'>
-                    <form onSubmit={submitHandler} className='loginForm'>
-                        <label htmlFor='username'>Username</label>
+                <div className='registerFormDiv'>
+                    <form onSubmit={submitHandler} className='registerForm'>
+                        <label htmlFor='username'>Insert a username</label>
                         <input
                             id='username'
                             type='text'
-                            placeholder='Username'
+                            placeholder='Insert username'
                             value={username}
                             onChange={usernameChangeHandler}
                         />
 
-                        <label htmlFor='password'>Password</label>
+                        <label htmlFor='password'>Insert a password</label>
                         <input
                             id='password'
                             type='password'
-                            placeholder='Password'
+                            placeholder='Insert password'
                             value={password}
                             onChange={passwordChangeHandler}
                         />
-                        <button>Login</button>
+                        <button>Register</button>
                     </form>
                 </div>
             )}
-            {loginHasError && <h5>Credentials are wrong</h5>}
+            {registerHasError && <h5>Username or password are incorrect.</h5>}
         </>
     );
 };
 
-export default LoginForm;
+export default RegisterForm;

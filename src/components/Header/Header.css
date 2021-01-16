@@ -4,13 +4,29 @@
     align-items: center;
 }
 
-.header a {
+.header a,
+.header button {
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.header a {
+    margin-left: 10px;
 }
 .header a:visited {
     color: #fff;
+}
+.header a:hover,
+.header button:hover {
+    background-color: rgb(34, 37, 44);
+}
+.header a:active,
+.header button:active {
+    background-color: rgb(32, 34, 37);
 }
 
 .header span {
@@ -23,10 +39,5 @@
     text-decoration: none;
     border: none;
     background: none;
-    color: #fff;
-    cursor: pointer;
     font-family: 'Hind Siliguri', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    height: 26px;
 }

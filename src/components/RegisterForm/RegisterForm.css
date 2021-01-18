@@ -1,6 +1,6 @@
 .registerFormDiv {
-    background-color: rgb(55, 60, 71);
-    padding: 30px;
+    padding: 10px;
+    width: 100%;
 }
 
 .registerForm {
@@ -8,31 +8,48 @@
     flex-direction: column;
 }
 
+.registerForm label {
+    color: #fff;
+    font-size: 1.6rem;
+}
+
 .registerForm input {
     margin-bottom: 15px;
     outline: none;
-    line-height: 1.9;
 }
 
-.registerForm button {
-    width: 80px;
+.registerBtn {
+    width: 100%;
+    background-color: #eee;
+    border: none;
     margin: 15px auto 0 auto;
+    transition: all 0.2s ease;
+}
+.registerBtn:hover {
+    background-color: #4b4f64;
+    color: #fff;
 }
 
 .registerForm input,
-.registerForm button {
-    padding: 4.5px;
+.registerBtn,
+h5 {
     outline: none;
     font-family: 'Hind Siliguri', sans-serif !important;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    line-height: 2.2;
 }
 
-@media screen and (min-width: 34rem) {
+h5 {
+    color: #fff;
+    text-align: center;
+}
+
+@media screen and (min-width: 300px) {
     .registerFormDiv {
+        width: 270px;
         margin: 0 auto;
-        width: 375px;
     }
-    .registerForm input {
-        width: 315px;
+    .registerBtn {
+        width: 250px;
     }
 }

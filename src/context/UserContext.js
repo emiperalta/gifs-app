@@ -20,7 +20,14 @@ export const UserContextProvider = ({ children }) => {
 
     return (
         <Context.Provider
-            value={{ jwt, setJwt, favs, setFavs, userLoggedIn, setUserLoggedIn }}
+            value={{
+                jwt,
+                setJwt,
+                favs,
+                setFavs,
+                userLoggedIn,
+                setUserLoggedIn,
+            }}
         >
             {children}
         </Context.Provider>

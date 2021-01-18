@@ -49,7 +49,7 @@ const RegisterForm = () => {
                             value={password}
                             onChange={passwordChangeHandler}
                         />
-                        <button>Register</button>
+                        <button className='registerBtn'>Register</button>
                     </form>
                 </div>
             )}

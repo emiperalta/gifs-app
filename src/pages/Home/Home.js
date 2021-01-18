@@ -13,7 +13,7 @@ const Home = () => {
     const { loading, gifs } = useGifs();
 
     return (
-        <>
+        <div className='home'>
             <Helmet>
                 <title>Home | Giffes</title>
                 <meta name='description' content='Gifs app' />
@@ -29,7 +29,7 @@ const Home = () => {
             )}
 
             <TrendingSearches />
-        </>
+        </div>
     );
 };
 

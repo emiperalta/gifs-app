@@ -5,7 +5,7 @@ import useUser from 'hooks/useUser';
 
 import './LoginForm.css';
 
-const LoginForm = () => {
+const LoginForm = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -13,8 +13,11 @@ const LoginForm = () => {
     const { isLogged, login, loginIsLoading, loginHasError } = useUser();
 
     useEffect(() => {
-        if (isLogged) navigateTo('/');
-    }, [isLogged, navigateTo]);
+        if (isLogged) {
+            navigateTo('/');
+            onLogin && onLogin();
+        }
+    }, [isLogged, navigateTo, onLogin]);
 
     const submitHandler = e => {
         e.preventDefault();
@@ -48,7 +51,7 @@ const LoginForm = () => {
                             value={password}
                             onChange={passwordChangeHandler}
                         />
-                        <button>Login</button>
+                        <button className='loginBtn'>Login</button>
                     </form>
                 </div>
             )}

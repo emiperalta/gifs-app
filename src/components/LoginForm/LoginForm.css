@@ -1,4 +1,4 @@
-.loginFormDiv {
+/* .loginFormDiv {
     background-color: rgb(55, 60, 71);
     padding: 30px;
 }
@@ -14,13 +14,13 @@
     line-height: 1.9;
 }
 
-.loginForm button {
+.loginBtn {
     width: 80px;
     margin: 15px auto 0 auto;
 }
 
 .loginForm input,
-.loginForm button {
+.loginBtn {
     padding: 4.5px;
     outline: none;
     font-family: 'Hind Siliguri', sans-serif !important;
@@ -34,5 +34,61 @@
     }
     .loginForm input {
         width: 315px;
+    }
+} */
+
+.loginFormDiv {
+    padding: 10px;
+    width: 100%;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginForm label {
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.loginForm input {
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.loginBtn {
+    width: 100%;
+    background-color: #eee;
+    border: none;
+    margin: 15px auto 0 auto;
+    transition: all 0.2s ease;
+}
+.loginBtn:hover {
+    background-color: #4b4f64;
+    color: #fff;
+}
+
+.loginForm input,
+.loginBtn,
+h5 {
+    outline: none;
+    font-family: 'Hind Siliguri', sans-serif !important;
+    font-size: 1.5rem;
+    line-height: 2.2;
+}
+
+h5 {
+    color: #fff;
+    text-align: center;
+}
+
+@media screen and (min-width: 300px) {
+    .loginFormDiv {
+        width: 270px;
+        margin: 0 auto;
+    }
+    .loginBtn {
+        width: 250px;
     }
 }

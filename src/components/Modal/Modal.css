@@ -1,0 +1,31 @@
+.modal {
+    position: fixed;
+    background-color: rgba(30, 32, 49, 0.6);
+    backdrop-filter: blur(3px);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+.modal-content {
+    position: relative;
+    padding: 10px 10px;
+    height: 85vh;
+    margin: 10vh 10px;
+    background-color: rgba(25, 25, 34);
+}
+
+.closeBtn {
+    display: block;
+    margin-bottom: 32px;
+}
+
+@media screen and (min-width: 27rem) {
+    .modal-content {
+        width: 305px;
+        margin: 10vh auto;
+    }
+}

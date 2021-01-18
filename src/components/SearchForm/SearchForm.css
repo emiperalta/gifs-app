@@ -7,9 +7,9 @@
 }
 
 .searchForm input,
-.searchForm button,
+.searchBtn,
 .searchForm select {
-    padding: 4.5px;
+    line-height: 2;
     outline: none;
     font-family: 'Hind Siliguri', sans-serif !important;
     font-size: 1.4rem;
@@ -25,8 +25,19 @@
     align-content: center;
 }
 
-.searchForm button {
+.searchBtn {
     width: 30%;
+    border: none;
+    line-height: 2.1;
+    transition: all 0.3s ease;
+}
+.searchBtn:hover {
+    background-color: #4b4f64;
+    color: #fff;
+}
+.searchBtn:active {
+    background-color: #3d4361;
+    color: #fff;
 }
 
 .searchForm select {
@@ -36,7 +47,7 @@
     border-radius: 10px;
 }
 
-.searchForm button,
+.searchBtn,
 .searchForm select {
     margin-left: 5px;
 }
@@ -55,7 +66,7 @@
 }
 
 @media screen and (min-width: 28rem) {
-    .searchForm button {
+    .searchBtn {
         width: 90px;
     }
 }

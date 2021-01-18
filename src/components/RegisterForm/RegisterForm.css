@@ -10,7 +10,7 @@
 
 .registerForm label {
     color: #fff;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 }
 
 .registerForm input {
@@ -23,10 +23,15 @@
     background-color: #eee;
     border: none;
     margin: 15px auto 0 auto;
+    cursor: pointer;
     transition: all 0.2s ease;
 }
 .registerBtn:hover {
     background-color: #4b4f64;
+    color: #fff;
+}
+.registerBtn:active {
+    background-color: #3d4361;
     color: #fff;
 }
 
@@ -35,7 +40,7 @@
 h5 {
     outline: none;
     font-family: 'Hind Siliguri', sans-serif !important;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     line-height: 2.2;
 }
 

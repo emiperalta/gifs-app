@@ -1,42 +1,3 @@
-/* .loginFormDiv {
-    background-color: rgb(55, 60, 71);
-    padding: 30px;
-}
-
-.loginForm {
-    display: flex;
-    flex-direction: column;
-}
-
-.loginForm input {
-    margin-bottom: 15px;
-    outline: none;
-    line-height: 1.9;
-}
-
-.loginBtn {
-    width: 80px;
-    margin: 15px auto 0 auto;
-}
-
-.loginForm input,
-.loginBtn {
-    padding: 4.5px;
-    outline: none;
-    font-family: 'Hind Siliguri', sans-serif !important;
-    font-size: 1.4rem;
-}
-
-@media screen and (min-width: 34rem) {
-    .loginFormDiv {
-        margin: 0 auto;
-        width: 375px;
-    }
-    .loginForm input {
-        width: 315px;
-    }
-} */
-
 .loginFormDiv {
     padding: 10px;
     width: 100%;
@@ -49,7 +10,7 @@
 
 .loginForm label {
     color: #fff;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 }
 
 .loginForm input {
@@ -62,10 +23,15 @@
     background-color: #eee;
     border: none;
     margin: 15px auto 0 auto;
+    cursor: pointer;
     transition: all 0.2s ease;
 }
 .loginBtn:hover {
     background-color: #4b4f64;
+    color: #fff;
+}
+.loginBtn:active {
+    background-color: #3d4361;
     color: #fff;
 }
 
@@ -74,7 +40,7 @@
 h5 {
     outline: none;
     font-family: 'Hind Siliguri', sans-serif !important;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     line-height: 2.2;
 }
 

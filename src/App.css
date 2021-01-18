@@ -5,7 +5,7 @@
 .App-content {
     display: flex;
     flex-direction: column;
-    font-size: 2rem;
+    font-size: 16px;
     color: white;
     padding: 16px;
     min-height: 100vh;
@@ -25,7 +25,7 @@ a:hover {
 .title {
     font-size: 70px;
     color: #fff;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 }
 .title span {
     cursor: pointer;

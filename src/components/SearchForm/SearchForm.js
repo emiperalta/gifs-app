@@ -9,7 +9,14 @@ const RATING = ['g', 'pg', 'pg-13', 'r'];
 const LANGUAGE = ['en', 'es', 'ja'];
 
 const SearchForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' }) => {
-    const { keyword, rating, lang, updateKeyword, updateRating, updateLang } = useForm({
+    const {
+        keyword,
+        rating,
+        lang,
+        updateKeyword,
+        updateRating,
+        updateLang,
+    } = useForm({
         initKeyword,
         initRating,
         initLang,
@@ -39,7 +46,7 @@ const SearchForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' }) => 
                 onChange={inputChangeHandler}
             />
 
-            <button>Search</button>
+            <button className='searchBtn'>Search</button>
 
             <div className='filters'>
                 <select onChange={ratingChangeHandler} value={rating}>

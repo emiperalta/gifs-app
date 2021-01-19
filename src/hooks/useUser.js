@@ -55,7 +55,7 @@ const useUser = () => {
     const register = useCallback(({ username, password }) => {
         setState({ loading: true, error: false });
 
-        userRegister({ username, password })
+        return userRegister({ username, password })
             .then(res => {
                 setState({ loading: false, error: false });
             })

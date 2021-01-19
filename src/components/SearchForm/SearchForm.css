@@ -1,7 +1,7 @@
 .searchForm {
     padding: 10px;
     position: sticky;
-    top: 5px;
+    top: 2px;
     z-index: 2;
     background-color: rgba(45, 45, 58, 0.9);
 }

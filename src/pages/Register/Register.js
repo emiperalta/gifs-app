@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import RegisterForm from 'components/RegisterForm/RegisterForm';
+import RegisterFormWithFormik from 'components/RegisterForm/RegisterFormWithFormik';
 
 const Register = () => {
     return (
@@ -11,7 +12,7 @@ const Register = () => {
                 <meta name='description' content='User signup' />
             </Helmet>
 
-            <RegisterForm />
+            <RegisterFormWithFormik />
         </>
     );
 };

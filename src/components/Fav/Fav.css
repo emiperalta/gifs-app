@@ -34,3 +34,8 @@
 .faved {
     fill: rgb(255, 0, 0);
 }
+
+.adv {
+    margin: 0;
+    font-weight: 500;
+}

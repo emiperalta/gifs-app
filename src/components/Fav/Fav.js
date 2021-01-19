@@ -39,6 +39,7 @@ const Fav = ({ id }) => {
 
             {showModal && (
                 <Modal onClose={closeModalHandler}>
+                    <h5 className='adv'>Login for add gifs to fav!</h5>
                     <LoginForm onLogin={loginHandler} />
                 </Modal>
             )}

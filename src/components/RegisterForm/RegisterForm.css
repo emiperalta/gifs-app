@@ -15,13 +15,24 @@
 
 .registerForm input {
     margin-bottom: 15px;
-    outline: none;
+}
+
+.input-error {
+    color: red;
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+.error {
+    outline: 1px solid red;
 }
 
 .registerBtn {
     width: 100%;
     background-color: #eee;
     border: none;
+    outline: none;
     margin: 15px auto 0 auto;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -38,13 +49,13 @@
 .registerForm input,
 .registerBtn,
 h5 {
-    outline: none;
     font-family: 'Hind Siliguri', sans-serif !important;
     font-size: 1.4rem;
     line-height: 2.2;
 }
 
 h5 {
+    outline: none;
     color: #fff;
     text-align: center;
 }

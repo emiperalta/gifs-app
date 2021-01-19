@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "formik": "^2.2.6",
     "just-debounce-it": "^1.1.0",
     "react": "^17.0.1",
     "react-content-loader": "^5.1.4",

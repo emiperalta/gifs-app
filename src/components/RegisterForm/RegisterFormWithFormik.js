@@ -11,11 +11,14 @@ const RegisterForm = () => {
     const [registered, setRegistered] = useState(false);
     const [, navigateTo] = useLocation();
 
-    const { register } = useUser();
+    const { register, registerHasError } = useUser();
 
     if (registered) {
         setTimeout(() => navigateTo('/login'), 4000);
     }
+
+    console.log(`Successfully registered? ${registered}`);
+    console.log(`Register has error: ${registerHasError}`);
 
     return (
         <>
@@ -34,11 +37,13 @@ const RegisterForm = () => {
                         validate={validateWithFormik}
                         onSubmit={(values, { setErrors }) => {
                             return register(values)
-                                .then(() => setRegistered(true))
+                                .then(res =>
+                                    res ? setRegistered(true) : setRegistered(false)
+                                )
                                 .catch(() => setErrors());
                         }}
                     >
-                        {({ errors }) => (
+                        {({ errors, isSubmitting }) => (
                             <Form className='registerForm'>
                                 <label htmlFor='username'>Insert a username</label>
                                 <Field
@@ -68,7 +73,11 @@ const RegisterForm = () => {
                                     component='small'
                                 />
 
-                                <button className='registerBtn' type='submit'>
+                                <button
+                                    className='registerBtn'
+                                    type='submit'
+                                    disabled={isSubmitting}
+                                >
                                     Register
                                 </button>
                             </Form>
@@ -76,6 +85,7 @@ const RegisterForm = () => {
                     </Formik>
                 </div>
             )}
+            {registerHasError && <h5>Username already in use!</h5>}
         </>
     );
 };

@@ -38,12 +38,16 @@
     transition: all 0.2s ease;
 }
 .registerBtn:hover {
-    background-color: #4b4f64;
+    background-color: rgb(75, 79, 100);
     color: #fff;
 }
 .registerBtn:active {
-    background-color: #3d4361;
+    background-color: rgb(61, 67, 97);
     color: #fff;
+}
+.registerBtn[disabled] {
+    opacity: 0.3;
+    pointer-events: none;
 }
 
 .registerForm input,

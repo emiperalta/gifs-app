@@ -2,7 +2,7 @@
     position: fixed;
     background-color: rgba(30, 32, 49, 0.6);
     backdrop-filter: blur(3px);
-    top: 0;
+    top: -10px;
     left: 0;
     bottom: 0;
     right: 0;

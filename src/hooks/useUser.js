@@ -57,7 +57,10 @@ const useUser = () => {
 
         return userRegister({ username, password })
             .then(res => {
-                setState({ loading: false, error: false });
+                res
+                    ? setState({ loading: false, error: false })
+                    : setState({ loading: false, error: true });
+                return res;
             })
             .catch(err => {
                 setState({ loading: false, error: true });
@@ -68,7 +71,7 @@ const useUser = () => {
     // get all faved gifs
     const getFavs = useCallback(() => {
         getFavsService({ jwt })
-            .then(favs => setFavs(favs))
+            .then(userFavs => setFavs(userFavs))
             .catch(err => console.log(err));
     }, [jwt, setFavs]);
 

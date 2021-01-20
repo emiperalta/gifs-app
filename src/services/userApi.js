@@ -26,7 +26,7 @@ export const userRegister = ({ username, password }) => {
         },
         body: JSON.stringify({ username, password }),
     }).then(res => {
-        if (!res.ok) throw new Error('Response is NOT ok');
+        if (!res.ok) return false;
         return true;
     });
 };

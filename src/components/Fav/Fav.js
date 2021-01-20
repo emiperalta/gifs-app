@@ -13,6 +13,8 @@ const Fav = ({ id }) => {
 
     const isFaved = favs.some(favId => favId === id);
 
+    console.log(favs);
+
     const favHandler = () => {
         if (isLogged) {
             isFaved ? deleteFav({ id }) : addFav({ id });

@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 
-import { favs } from '../utils/favs';
+import User from '../models/User';
 import { verifyToken } from '../utils/tokenManagment';
 
 export const getFavs: RequestHandler = async (req, res) => {
@@ -8,29 +8,30 @@ export const getFavs: RequestHandler = async (req, res) => {
         const currentUser: any = verifyToken(req.token);
 
         const { username } = currentUser;
+        const user = await User.findOne({ username });
 
-        const userFavs = favs[username];
-
-        return res.status(200).json({ userFavs });
+        return res.status(200).json({ userFavs: user.favs });
     } catch (err) {
         return res.status(404).json({ error: err.message });
     }
 };
 
-export const postFav: RequestHandler = (req, res) => {
+export const postFav: RequestHandler = async (req, res) => {
     try {
         const currentUser: any = verifyToken(req.token);
 
         const { id } = req.params;
         const { username } = currentUser;
+        const user = await User.findOne({ username });
 
-        const alreadyExist = favs[username].find((favId: string) => favId === id);
+        const alreadyExist = user.favs.some((favId: string) => favId === id);
 
         if (!alreadyExist) {
-            favs[username].push(id);
+            user.favs.push(id);
+            await user.save();
         }
 
-        const newFav = favs[username];
+        const newFav = user.favs;
 
         return res.status(201).json({ newFav });
     } catch (err) {
@@ -38,19 +39,21 @@ export const postFav: RequestHandler = (req, res) => {
     }
 };
 
-export const deleteFav: RequestHandler = (req, res) => {
+export const deleteFav: RequestHandler = async (req, res) => {
     try {
         const currentUser: any = verifyToken(req.token);
 
         const { id } = req.params;
         const { username } = currentUser;
+        let user = await User.findOne({ username });
 
-        const alreadyExist = favs[username].find((favId: string) => favId === id);
+        const alreadyExist = user.favs.find((favId: string) => favId === id);
 
         if (alreadyExist) {
-            favs[username] = favs[username].filter((favId: string) => favId !== id);
+            user.favs = user.favs.filter((favId: string) => favId !== id);
+            await user.save();
 
-            const favDeleted = favs[username];
+            const favDeleted = user.favs;
 
             return res.status(200).json({ favDeleted });
         } else return res.sendStatus(404);

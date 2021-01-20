@@ -3,7 +3,6 @@ import { compare, hash } from 'bcryptjs';
 
 import User from '../models/User';
 import { generateToken } from '../utils/tokenManagment';
-import { favs } from '../utils/favs';
 
 export const postLogin: RequestHandler = async (req, res) => {
     try {
@@ -44,8 +43,6 @@ export const postRegister: RequestHandler = async (req, res) => {
                 username,
                 password: hashedPassword,
             });
-
-            favs[username] = []; // to allow save user favs
 
             const newUser = await user.save();
 

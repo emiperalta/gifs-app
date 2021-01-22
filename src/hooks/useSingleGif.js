@@ -10,7 +10,7 @@ const useSingleGif = ({ id }) => {
 
     const [gif, setGif] = useState(gifFromCache);
     const [isLoading, setIsLoading] = useState(false);
-    const [isError, setisError] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         if (!gif) {
@@ -19,11 +19,11 @@ const useSingleGif = ({ id }) => {
                 .then(gif => {
                     setGif(gif);
                     setIsLoading(false);
-                    setisError(false);
+                    setIsError(false);
                 })
                 .catch(err => {
                     setIsLoading(false);
-                    setisError(true);
+                    setIsError(true);
                 });
         }
     }, [gif, id]);

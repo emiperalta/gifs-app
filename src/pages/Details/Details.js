@@ -32,6 +32,7 @@ const Detail = ({ params }) => {
             <Helmet>
                 <title>{title} | Giffes</title>
             </Helmet>
+
             <Gif gif={gif} detail={detail} />
         </>
     );

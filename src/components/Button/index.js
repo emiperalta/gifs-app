@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Link } from './styles';
+import { Button, Link } from './styles';
 
-const Button = ({ children, href }) => {
-    return <Link href={href}>{children}</Link>;
+const ButtonComponent = ({ children, href }) => {
+    return href ? <Link href={href}>{children}</Link> : <Button>{children}</Button>;
 };
 
-export default Button;
+export default ButtonComponent;

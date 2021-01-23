@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useLocation } from 'wouter';
 
+import Button from 'components/Button';
 import useUser from 'hooks/useUser';
 import { validateWithFormik } from 'utils/validation';
 
@@ -73,13 +74,9 @@ const RegisterForm = () => {
                                     component='small'
                                 />
 
-                                <button
-                                    className='registerBtn'
-                                    type='submit'
-                                    disabled={isSubmitting}
-                                >
+                                <Button type='submit' disabled={isSubmitting}>
                                     Register
-                                </button>
+                                </Button>
                             </Form>
                         )}
                     </Formik>

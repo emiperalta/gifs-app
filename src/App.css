@@ -10,18 +10,9 @@
     min-height: 100vh;
 }
 
-a,
-.title {
+a {
     color: rgb(255, 255, 255);
     text-decoration: none;
-}
-
-.title {
-    margin-bottom: 15px;
-}
-.title span {
-    font-size: 6rem;
-    cursor: pointer;
 }
 
 .centeredLoadingGifs,

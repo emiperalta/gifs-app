@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 
+import Button from 'components/Button';
 import useUser from 'hooks/useUser';
 
 import './LoginForm.css';
@@ -51,7 +52,7 @@ const LoginForm = ({ onLogin }) => {
                             value={password}
                             onChange={passwordChangeHandler}
                         />
-                        <button className='loginBtn'>Login</button>
+                        <Button>Login</Button>
                     </form>
                 </div>
             )}

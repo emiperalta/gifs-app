@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'wouter';
 
+import Button from 'components/Button';
 import useForm from './hook';
 
 import './SearchForm.css';
@@ -46,7 +47,7 @@ const SearchForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' }) => 
                 onChange={inputChangeHandler}
             />
 
-            <button className='searchBtn'>Search</button>
+            <Button>Search</Button>
 
             <div className='filters'>
                 <select onChange={ratingChangeHandler} value={rating}>

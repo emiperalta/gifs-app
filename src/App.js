@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Switch, Route, Router } from 'wouter';
+import { Switch, Route, Router } from 'wouter';
 
 import { GifsContextProvider } from 'context/GifsContext';
 import { UserContextProvider } from 'context/UserContext';
@@ -22,11 +22,6 @@ function App() {
                 <div className='App'>
                     <section className='App-content'>
                         <Header />
-                        <section className='title'>
-                            <span>
-                                <Link to='/'>GIFFES</Link>
-                            </span>
-                        </section>
                         <GifsContextProvider>
                             <Switch>
                                 <Route path='/' component={Home} />

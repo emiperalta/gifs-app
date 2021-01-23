@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 export const Link = styled(LinkWouter)`
     background-color: #4b4f64;
     border: 1px solid transparent;
+    outline: none;
+    cursor: pointer;
     font-size: 1.4rem;
     padding: 0.5rem 1rem;
     color: #fff;
@@ -21,3 +23,5 @@ export const Link = styled(LinkWouter)`
         pointer-events: none;
     }
 `;
+
+export const Button = Link.withComponent('button');

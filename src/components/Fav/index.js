@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import useUser from 'hooks/useUser';
 
-import Modal from 'components/Modal/Modal';
-import LoginForm from 'components/LoginForm/LoginForm';
+import Modal from 'components/Modal';
+import LoginForm from 'components/LoginForm';
 
 import './Fav.css';
 

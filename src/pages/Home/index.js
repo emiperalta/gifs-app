@@ -2,9 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import useGifs from 'hooks/useGifs';
-import SearchForm from 'components/SearchForm/SearchForm';
+import SearchForm from 'components/SearchForm';
 import LoadingImages from 'components/ContentLoader/LoadingImages';
-import GifsList from 'components/GifsList/GifsList';
+import GifsList from 'components/GifsList';
 import TrendingSearches from 'components/TrendingSearches/LazyTrending';
 
 import './Home.css';

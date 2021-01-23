@@ -40,7 +40,7 @@ const RegisterForm = () => {
                                 .then(res =>
                                     res ? setRegistered(true) : setRegistered(false)
                                 )
-                                .catch(() => setErrors());
+                                .catch(err => setErrors(err));
                         }}
                     >
                         {({ errors, isSubmitting }) => (

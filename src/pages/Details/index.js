@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'wouter';
 import { Helmet } from 'react-helmet';
 
-import Gif from 'components/Gif/Gif';
+import Gif from 'components/Gif';
 import LoadingImages from 'components/ContentLoader/LoadingImages';
 import useSingleGif from 'hooks/useSingleGif';
 

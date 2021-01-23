@@ -2,17 +2,16 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 body {
     background-color: #282c34;
-    margin: 0;
     font-family: 'Hind Siliguri', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

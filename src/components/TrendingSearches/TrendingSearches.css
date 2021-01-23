@@ -11,3 +11,9 @@
 .trendItem {
     margin-right: 20px;
 }
+.trendItem:visited {
+    color: rgb(206, 146, 146);
+}
+.trendItem:hover {
+    color: #f0cfcf;
+}

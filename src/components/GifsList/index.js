@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Gif from '../Gif/Gif';
+import Gif from '../Gif';
 
 import './GifsList.css';
 

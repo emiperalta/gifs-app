@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'wouter';
 
-import Fav from 'components/Fav/Fav';
+import Fav from 'components/Fav';
 
 import './Gif.css';
 

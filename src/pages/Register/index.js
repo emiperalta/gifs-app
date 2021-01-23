@@ -1,8 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import RegisterForm from 'components/RegisterForm/RegisterForm';
-import RegisterFormWithFormik from 'components/RegisterForm/RegisterFormWithFormik';
+import RegisterFormWithFormik from 'components/RegisterForm';
 
 const Register = () => {
     return (

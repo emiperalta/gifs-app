@@ -3,8 +3,8 @@ import debounce from 'just-debounce-it';
 import { Helmet } from 'react-helmet';
 
 import LoadingImages from 'components/ContentLoader/LoadingImages';
-import SearchForm from 'components/SearchForm/SearchForm';
-import GifsList from 'components/GifsList/GifsList';
+import SearchForm from 'components/SearchForm';
+import GifsList from 'components/GifsList';
 import useGifs from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
 

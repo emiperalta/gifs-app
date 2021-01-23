@@ -22,6 +22,7 @@
     width: 100%;
     background-color: #eee;
     border: none;
+    outline: none;
     margin: 15px auto 0 auto;
     cursor: pointer;
     transition: all 0.2s ease;

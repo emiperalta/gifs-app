@@ -40,14 +40,16 @@ const SearchForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' }) => 
 
     return (
         <form onSubmit={submitHandler} className='searchForm'>
-            <input
-                type='text'
-                placeholder='Search any gif...'
-                value={keyword}
-                onChange={inputChangeHandler}
-            />
+            <div className='searchBar'>
+                <input
+                    type='text'
+                    placeholder='Search any gif...'
+                    value={keyword}
+                    onChange={inputChangeHandler}
+                />
 
-            <Button>Search</Button>
+                <Button>Search</Button>
+            </div>
 
             <div className='filters'>
                 <select onChange={ratingChangeHandler} value={rating}>

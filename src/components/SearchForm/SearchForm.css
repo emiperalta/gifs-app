@@ -4,17 +4,22 @@
     top: 2px;
     z-index: 2;
     background-color: rgba(45, 45, 58, 0.9);
+    width: 100%;
 }
 
-.searchForm input,
+.searchBar input,
 .filters select {
-    padding: 0.2rem 1rem !important;
+    padding: 0.2rem 0.5rem !important;
     outline: none;
     font-family: 'Hind Siliguri', sans-serif !important;
     font-size: 16px;
 }
 
-.searchForm input {
+.searchBar {
+    display: flex;
+    justify-content: center;
+}
+.searchBar input {
     width: 60%;
 }
 
@@ -26,13 +31,9 @@
 
 .filters select {
     margin-top: 5px;
-    width: 20%;
-    padding: 3px;
-    border-radius: 10px;
-}
-
-.filters select {
     margin-left: 5px;
+    width: 73px;
+    border-radius: 10px;
 }
 
 @media screen and (min-width: 42rem) {
@@ -40,22 +41,14 @@
         width: 470px;
         margin: 0 auto;
     }
-    .searchForm input {
+    .searchBar input {
         width: 270px;
     }
-    .filters select {
-        width: 90px;
-    }
 }
 
-@media screen and (min-width: 28rem) {
-    .searchBtn {
-        width: 90px;
-    }
-}
-
-@media screen and (max-width: 35rem) {
-    .searchForm select {
-        width: 73px;
+@media screen and (min-width: 490px) {
+    .searchForm {
+        width: 455px;
+        margin: 0 auto;
     }
 }

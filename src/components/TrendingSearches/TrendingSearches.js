@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'wouter';
 
 import { getTrendingTerms } from 'services/giphyApi';
 
-import './TrendingSearches.css';
+import { Trending, TrendItem } from './styles';
 
 const TrendingSearches = () => {
     const [trends, setTrends] = useState([]);
@@ -13,13 +12,13 @@ const TrendingSearches = () => {
     }, []);
 
     return (
-        <div className='trending'>
-            {trends.map(trend => (
-                <Link to={`/search/${trend}`} className='trendItem' key={trend}>
+        <Trending>
+            {trends.map((trend, index) => (
+                <TrendItem to={`/search/${trend}`} key={trend} index={index}>
                     {trend}
-                </Link>
+                </TrendItem>
             ))}
-        </div>
+        </Trending>
     );
 };
 

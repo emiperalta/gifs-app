@@ -1,22 +1,22 @@
-import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
-export const pageErrorStyles = css({
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    padding: '1rem',
-});
+export const PageError = styled('div')`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+`;
 
-export const codeErrorStyles = css({
-    fontSize: '5rem',
-    fontWeight: 'bold',
-    fontStyle: 'italic',
-    margin: '1rem 0',
-});
+export const CodeError = styled('span')`
+    font-size: 5rem;
+    font-weight: bold;
+    font-style: italic;
+    margin: 0 0 1rem 0;
+`;
 
-export const msgErrorStyles = css({
-    fontSize: '1.5rem',
-    marginBottom: '5rem',
-});
+export const MsgError = styled('span')`
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+`;

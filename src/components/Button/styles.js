@@ -1,14 +1,15 @@
 import { Link as LinkWouter } from 'wouter';
 import styled from '@emotion/styled';
 
-export const Link = styled(LinkWouter)`
+const common = `
     background-color: #4b4f64;
     border: 1px solid transparent;
     outline: none;
     cursor: pointer;
-    font-size: 1.4rem;
-    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
     color: #fff;
+    padding: 0.3rem 0;
+    width: 100%;
     transition: all 0.2s ease;
 
     &:hover {
@@ -24,4 +25,19 @@ export const Link = styled(LinkWouter)`
     }
 `;
 
-export const Button = Link.withComponent('button');
+export const Link = styled(LinkWouter)(`
+    ${common}
+
+    @media screen and (min-width: 220px) {
+        width: 155px;
+    }
+`);
+
+export const Button = styled('button')(`
+    ${common}
+    font-size: 1.2rem;    
+
+    @media screen and (min-width: 200px) {
+        width: 100px;
+    }
+`);

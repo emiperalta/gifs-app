@@ -33,7 +33,7 @@ export const Link = styled(LinkWouter)(`
     }
 `);
 
-export const Button = styled('button')(`
+export const Button = styled.button(`
     ${common}
     font-size: 1.2rem;    
 

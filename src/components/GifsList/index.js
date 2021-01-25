@@ -1,17 +1,17 @@
 import React from 'react';
 
-import Gif from '../Gif';
+import Gif from 'components/Gif';
 
-import './GifsList.css';
+import { GifsList } from './styles';
 
-const GifsList = ({ gifs }) => {
+const GifsListComponent = ({ gifs }) => {
     return (
-        <div className='gifsList'>
+        <GifsList>
             {gifs.map(gif => (
                 <Gif gif={gif} key={gif.id} />
             ))}
-        </div>
+        </GifsList>
     );
 };
 
-export default GifsList;
+export default GifsListComponent;

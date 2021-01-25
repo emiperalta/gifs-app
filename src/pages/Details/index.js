@@ -7,8 +7,6 @@ import LoadingImages from 'components/ContentLoader/LoadingImages';
 import useSingleGif from 'hooks/useSingleGif';
 
 const Detail = ({ params }) => {
-    const detail = true; // passed as prop to the Gif component for styling purposes
-
     const { id } = params;
     const { gif, isLoading, isError } = useSingleGif({ id });
 
@@ -33,7 +31,7 @@ const Detail = ({ params }) => {
                 <title>{title} | Giffes</title>
             </Helmet>
 
-            <Gif gif={gif} detail={detail} />
+            <Gif gif={gif} size='medium' />
         </>
     );
 };

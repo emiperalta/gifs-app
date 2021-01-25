@@ -24,6 +24,6 @@ export const TrendItem = styled(Link)`
 
     ${props => {
         const colorIndex = (props.index % 3) + 1;
-        return `background-color: var(--bg-color${colorIndex})`;
+        return `background-color: var(--trend-bg-color${colorIndex})`;
     }}
 `;

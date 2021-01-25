@@ -3,11 +3,12 @@
 }
 
 .App-content {
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
     display: flex;
     flex-direction: column;
-    color: white;
-    padding: 16px;
     min-height: 100vh;
+    padding: 16px;
 }
 
 a {

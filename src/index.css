@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --bg-color1: teal;
-    --bg-color2: darkslategray;
-    --bg-color3: midnightblue;
+    --primary-bg-color: #282c34;
+    --primary-text-color: #ffffff;
+    --trend-bg-color1: teal;
+    --trend-bg-color2: darkslategray;
+    --trend-bg-color3: midnightblue;
+    --grid-column: 400px;
 }
 
 * {
@@ -12,8 +15,6 @@
 }
 
 body {
-    background-color: #282c34;
-    font-size: 16px;
     font-family: 'Hind Siliguri', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -21,4 +22,22 @@ body {
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@media screen and (max-width: 37.5rem) {
+    :root {
+        --grid-column: 270px;
+    }
+}
+
+@media screen and (max-width: 28rem) {
+    :root {
+        --grid-column: 200px;
+    }
+}
+
+@media screen and (min-width: 37.5rem) {
+    :root {
+        --grid-column: 300px;
+    }
 }

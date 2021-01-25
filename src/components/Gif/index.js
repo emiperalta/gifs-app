@@ -3,18 +3,18 @@ import { Link } from 'wouter';
 
 import Fav from 'components/Fav';
 
-import './Gif.css';
+import { GifContainer } from './styles';
 
-const Gif = ({ gif: { id, title, url }, detail }) => {
+const Gif = ({ gif: { id, title, url }, size }) => {
     return (
         <>
-            <div className={detail ? 'gifItemDetail' : 'gifItem'}>
+            <GifContainer size={size}>
                 <Fav id={id} />
                 <Link to={`/gif/${id}`}>
                     <h5>{title}</h5>
-                    <img src={url} alt={title} />
+                    <img loading='lazy' src={url} alt={title} />
                 </Link>
-            </div>
+            </GifContainer>
         </>
     );
 };

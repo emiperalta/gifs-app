@@ -7,7 +7,7 @@ const MONGODB_URI = process.env.MONGODB_URI!;
 const mongooseOptions: ConnectionOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: true,
+    useFindAndModify: false,
 };
 
 (async () => {

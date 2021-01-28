@@ -5,6 +5,7 @@ POST {{baseURL}}/login
 Content-Type: application/json
 
 {
+    "email": "test@test.com",
     "username": "test",
     "password": "test"
 }
@@ -14,6 +15,7 @@ POST {{baseURL}}/register
 Content-Type: application/json
 
 {
+    "email": "test@test.com",
     "username": "test",
     "password": "test"
 }

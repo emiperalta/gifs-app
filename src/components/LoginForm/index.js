@@ -7,6 +7,7 @@ import useUser from 'hooks/useUser';
 import './LoginForm.css';
 
 const LoginForm = ({ onLogin }) => {
+    const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -25,8 +26,9 @@ const LoginForm = ({ onLogin }) => {
         login({ username, password });
     };
 
-    const usernameChangeHandler = e => setUsername(e.target.value);
-    const passwordChangeHandler = e => setPassword(e.target.value);
+    const handleEmail = e => setEmail(e.target.value);
+    const handleUsername = e => setUsername(e.target.value);
+    const handlePassword = e => setPassword(e.target.value);
 
     return (
         <>
@@ -35,22 +37,31 @@ const LoginForm = ({ onLogin }) => {
             ) : (
                 <div className='loginFormDiv'>
                     <form onSubmit={submitHandler} className='loginForm'>
+                        <label htmlFor='email'>Username</label>
+                        <input
+                            id='email'
+                            onChange={handleEmail}
+                            placeholder='Email'
+                            type='email'
+                            value={email}
+                        />
+
                         <label htmlFor='username'>Username</label>
                         <input
                             id='username'
-                            type='text'
+                            onChange={handleUsername}
                             placeholder='Username'
+                            type='text'
                             value={username}
-                            onChange={usernameChangeHandler}
                         />
 
                         <label htmlFor='password'>Password</label>
                         <input
                             id='password'
-                            type='password'
+                            onChange={handlePassword}
                             placeholder='Password'
+                            type='password'
                             value={password}
-                            onChange={passwordChangeHandler}
                         />
                         <Button>Login</Button>
                     </form>

@@ -1,12 +1,12 @@
 const { REACT_APP_USERAPI_BASEURL } = process.env;
 
-export const userLogin = ({ username, password }) => {
+export const userLogin = ({ email, username, password }) => {
     return fetch(`${REACT_APP_USERAPI_BASEURL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, username, password }),
     })
         .then(res => {
             if (!res.ok) throw new Error('Response is NOT ok');
@@ -18,13 +18,13 @@ export const userLogin = ({ username, password }) => {
         });
 };
 
-export const userRegister = ({ username, password }) => {
+export const userRegister = ({ email, username, password }) => {
     return fetch(`${REACT_APP_USERAPI_BASEURL}/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, username, password }),
     }).then(res => {
         if (!res.ok) return false;
         return true;

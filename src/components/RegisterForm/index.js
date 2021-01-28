@@ -9,6 +9,7 @@ import { validateWithFormik } from 'utils/validation';
 import './RegisterForm.css';
 
 const RegisterForm = () => {
+    const [email, setEmail] = useState('');
     const [registered, setRegistered] = useState(false);
     const [, navigateTo] = useLocation();
 
@@ -18,55 +19,77 @@ const RegisterForm = () => {
         setTimeout(() => navigateTo('/login'), 4000);
     }
 
-    console.log(`Successfully registered? ${registered}`);
-    console.log(`Register has error: ${registerHasError}`);
+    const initialValues = {
+        email: '',
+        username: '',
+        password: '',
+    };
 
     return (
         <>
             {registered ? (
                 <>
                     <h4>You've been successfully registered!</h4>
-                    <p>Redirecting to Login page...</p>
+                    <p>
+                        An email was sent to <strong>{email}</strong>
+                    </p>
                 </>
             ) : (
                 <div className='registerFormDiv'>
                     <Formik
-                        initialValues={{
-                            username: '',
-                            password: '',
-                        }}
+                        initialValues={initialValues}
                         validate={validateWithFormik}
                         onSubmit={(values, { setErrors }) => {
                             return register(values)
-                                .then(res =>
-                                    res ? setRegistered(true) : setRegistered(false)
-                                )
+                                .then(res => {
+                                    if (res) {
+                                        setRegistered(true);
+                                        setEmail(values.email);
+                                    } else setRegistered(false);
+                                })
                                 .catch(err => setErrors(err));
                         }}
                     >
                         {({ errors, isSubmitting }) => (
                             <Form className='registerForm'>
-                                <label htmlFor='username'>Insert a username</label>
+                                <label htmlFor='email'>Insert email</label>
                                 <Field
-                                    id='username'
-                                    name='username'
-                                    type='text'
-                                    placeholder='Insert username'
-                                    className={errors.username ? 'error' : ''}
+                                    id='email'
+                                    className={errors.email ? 'error' : ''}
+                                    name='email'
+                                    placeholder='Insert email'
+                                    required={true}
+                                    type='email'
                                 />
                                 <ErrorMessage
                                     className='input-error'
-                                    name='username'
                                     component='small'
+                                    name='email'
+                                />
+
+                                <label htmlFor='username'>Insert a username</label>
+                                <Field
+                                    id='username'
+                                    className={errors.username ? 'error' : ''}
+                                    name='username'
+                                    placeholder='Insert username'
+                                    required={true}
+                                    type='text'
+                                />
+                                <ErrorMessage
+                                    className='input-error'
+                                    component='small'
+                                    name='username'
                                 />
 
                                 <label htmlFor='password'>Insert a password</label>
                                 <Field
                                     id='password'
-                                    name='password'
-                                    type='password'
-                                    placeholder='Insert password'
                                     className={errors.password ? 'error' : ''}
+                                    name='password'
+                                    placeholder='Insert password'
+                                    required={true}
+                                    type='password'
                                 />
                                 <ErrorMessage
                                     className='input-error'
@@ -74,7 +97,7 @@ const RegisterForm = () => {
                                     component='small'
                                 />
 
-                                <Button type='submit' disabled={isSubmitting}>
+                                <Button type='button' disabled={isSubmitting}>
                                     Register
                                 </Button>
                             </Form>

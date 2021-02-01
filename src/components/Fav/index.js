@@ -13,19 +13,18 @@ const Fav = ({ id }) => {
 
     const isFaved = favs.some(favId => favId === id);
 
-    const favHandler = () => {
+    const handleFav = () => {
         if (isLogged) {
             isFaved ? deleteFav({ id }) : addFav({ id });
         } else return setShowModal(true);
     };
 
-    const closeModalHandler = () => setShowModal(false);
-
-    const loginHandler = () => setShowModal(false);
+    const handleClose = () => setShowModal(false);
+    const handleLogin = () => setShowModal(false);
 
     return (
         <div className='gif-fav'>
-            <button onClick={favHandler} className='favBtn'>
+            <button onClick={handleFav} className='favBtn'>
                 <svg
                     id='i-heart'
                     xmlns='http://www.w3.org/2000/svg'
@@ -38,9 +37,8 @@ const Fav = ({ id }) => {
             </button>
 
             {showModal && (
-                <Modal onClose={closeModalHandler}>
-                    <h5 className='adv'>Login for add gifs to fav!</h5>
-                    <LoginForm onLogin={loginHandler} />
+                <Modal onClose={handleClose}>
+                    <LoginForm onLogin={handleLogin} />
                 </Modal>
             )}
         </div>

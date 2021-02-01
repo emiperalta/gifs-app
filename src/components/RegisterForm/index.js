@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useLocation } from 'wouter';
 
 import Button from 'components/Button';
 import useUser from 'hooks/useUser';
@@ -11,13 +10,8 @@ import './RegisterForm.css';
 const RegisterForm = () => {
     const [email, setEmail] = useState('');
     const [registered, setRegistered] = useState(false);
-    const [, navigateTo] = useLocation();
 
     const { register, registerHasError } = useUser();
-
-    if (registered) {
-        setTimeout(() => navigateTo('/login'), 4000);
-    }
 
     const initialValues = {
         email: '',
@@ -29,13 +23,16 @@ const RegisterForm = () => {
         <>
             {registered ? (
                 <>
-                    <h4>You've been successfully registered!</h4>
-                    <p>
-                        An email was sent to <strong>{email}</strong>
+                    <h4 className='success-msg'>
+                        You've been successfully registered!
+                    </h4>
+                    <p className='confirmation-msg'>
+                        A confirmation email was sent to <strong>{email}</strong>
                     </p>
                 </>
             ) : (
                 <div className='registerFormDiv'>
+                    <p className='form-title'>Create your account</p>
                     <Formik
                         initialValues={initialValues}
                         validate={validateWithFormik}
@@ -52,12 +49,10 @@ const RegisterForm = () => {
                     >
                         {({ errors, isSubmitting }) => (
                             <Form className='registerForm'>
-                                <label htmlFor='email'>Insert email</label>
                                 <Field
-                                    id='email'
                                     className={errors.email ? 'error' : ''}
                                     name='email'
-                                    placeholder='Insert email'
+                                    placeholder='Email'
                                     required={true}
                                     type='email'
                                 />
@@ -67,12 +62,10 @@ const RegisterForm = () => {
                                     name='email'
                                 />
 
-                                <label htmlFor='username'>Insert a username</label>
                                 <Field
-                                    id='username'
                                     className={errors.username ? 'error' : ''}
                                     name='username'
-                                    placeholder='Insert username'
+                                    placeholder='Username'
                                     required={true}
                                     type='text'
                                 />
@@ -82,12 +75,10 @@ const RegisterForm = () => {
                                     name='username'
                                 />
 
-                                <label htmlFor='password'>Insert a password</label>
                                 <Field
-                                    id='password'
                                     className={errors.password ? 'error' : ''}
                                     name='password'
-                                    placeholder='Insert password'
+                                    placeholder='Password'
                                     required={true}
                                     type='password'
                                 />
@@ -97,7 +88,7 @@ const RegisterForm = () => {
                                     component='small'
                                 />
 
-                                <Button type='button' disabled={isSubmitting}>
+                                <Button type='submit' disabled={isSubmitting}>
                                     Register
                                 </Button>
                             </Form>

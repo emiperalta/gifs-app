@@ -18,10 +18,10 @@ const useUser = () => {
 
     // user login
     const login = useCallback(
-        ({ email, username, password }) => {
+        ({ username, password }) => {
             setState({ loading: true, error: false });
 
-            userLogin({ email, username, password })
+            userLogin({ username, password })
                 .then(jwt => {
                     setJwt(jwt);
                     setState({ loading: false, error: false });

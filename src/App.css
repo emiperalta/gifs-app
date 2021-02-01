@@ -24,3 +24,10 @@ a {
 .centeredLoadingTrends {
     margin-top: 20px;
 }
+
+.form-title {
+    font-size: 1.4rem;
+    text-align: left;
+    padding-bottom: 10px;
+    color: #fff;
+}

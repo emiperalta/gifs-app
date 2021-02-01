@@ -1,16 +1,12 @@
 .loginFormDiv {
     padding: 10px;
     width: 100%;
+    background-color: rgba(45, 45, 58, 0.9);
 }
 
 .loginForm {
     display: flex;
     flex-direction: column;
-}
-
-.loginForm label {
-    color: #fff;
-    font-size: 1.4rem;
 }
 
 .loginForm input {
@@ -38,17 +34,17 @@
 
 .loginForm input,
 .loginBtn,
-h5 {
+.login-error {
     outline: none;
     font-family: 'Hind Siliguri', sans-serif !important;
-    font-size: 1.3rem;
-    line-height: 2.2;
+    font-size: 1.2rem;
+    line-height: 2;
 }
 
-h5 {
+.login-error {
     color: #fff;
     text-align: center;
-    margin: 5px 0;
+    margin: 20px 0;
 }
 
 @media screen and (min-width: 300px) {

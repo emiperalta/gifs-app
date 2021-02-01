@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { RequestHandler } from 'express';
 import { compare, hash } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -5,6 +6,8 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 import { generateToken, verifyToken } from '../utils/tokenManagment';
 import { transporter } from '../utils/transporter';
+
+const { API_URL, APP_URL } = process.env;
 
 export const postLogin: RequestHandler = async (req, res) => {
     try {
@@ -14,6 +17,10 @@ export const postLogin: RequestHandler = async (req, res) => {
 
         if (!user) {
             return res.status(403).json({ error: 'User not found' });
+        }
+
+        if (!user.confirmed) {
+            return res.status(403).json({ error: 'User not confirmed' });
         }
 
         const matchPassword = await compare(password, user.password);
@@ -50,14 +57,23 @@ export const postRegister: RequestHandler = async (req, res) => {
 
             const newUser = await user.save();
 
-            const token = generateToken(newUser);
-            const url = `http://localhost:5000/api/confirmation/${token}`;
+            // send email asynchronously
+            jwt.sign(
+                { user: user._id, username: user.username },
+                process.env.JWT_KEY!,
+                {
+                    expiresIn: '1h',
+                },
+                (err, token) => {
+                    const url = `${API_URL}/confirmation/${token}`;
 
-            await transporter.sendMail({
-                to: email,
-                subject: 'Confirm Email',
-                html: `Please click this link to confirm your email: <a href="${url}">${url}</a>`,
-            });
+                    transporter.sendMail({
+                        to: email,
+                        subject: 'Confirm Email',
+                        html: `Please click this link to confirm your email: <a href="${url}">CLICK ME</a>`,
+                    });
+                }
+            );
 
             return res.status(201).json({ newUser });
         }
@@ -72,8 +88,7 @@ export const confirmAccount: RequestHandler = async (req, res) => {
 
         await User.findByIdAndUpdate(verified.user, { confirmed: true });
 
-        // TODO: redirect to login page but in client side
-        return res.redirect('/api/login');
+        return res.redirect(`${APP_URL}/login`);
     } catch (err) {
         return res.status(400).json({ error: err.message });
     }

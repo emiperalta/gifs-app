@@ -25,11 +25,11 @@ const SearchForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' }) => 
 
     const [, navigateTo] = useLocation();
 
-    const inputChangeHandler = e => updateKeyword(e.target.value);
+    const handleInputChange = e => updateKeyword(e.target.value);
 
-    const ratingChangeHandler = e => updateRating(e.target.value);
+    const handleRatingChange = e => updateRating(e.target.value);
 
-    const langChangeHandler = e => updateLang(e.target.value);
+    const handleLangChange = e => updateLang(e.target.value);
 
     const submitHandler = e => {
         e.preventDefault();
@@ -45,14 +45,14 @@ const SearchForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' }) => 
                     type='text'
                     placeholder='Search any gif...'
                     value={keyword}
-                    onChange={inputChangeHandler}
+                    onChange={handleInputChange}
                 />
 
                 <Button>Search</Button>
             </div>
 
             <div className='filters'>
-                <select onChange={ratingChangeHandler} value={rating}>
+                <select onChange={handleRatingChange} value={rating}>
                     <option disabled>Rating</option>
                     {RATING.map(rating => (
                         <option key={rating} value={rating}>
@@ -61,7 +61,7 @@ const SearchForm = ({ initKeyword = '', initRating = 'g', initLang = 'en' }) => 
                     ))}
                 </select>
 
-                <select onChange={langChangeHandler} value={lang}>
+                <select onChange={handleLangChange} value={lang}>
                     <option disabled>Language</option>
                     {LANGUAGE.map(lang => (
                         <option key={lang} value={lang}>

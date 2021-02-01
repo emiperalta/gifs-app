@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 
 import Button from 'components/Button';
+import Spinner from 'components/ContentLoader/LoadingSubmit';
 import useUser from 'hooks/useUser';
 
 import './LoginForm.css';
 
 const LoginForm = ({ onLogin }) => {
-    const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -21,43 +21,30 @@ const LoginForm = ({ onLogin }) => {
         }
     }, [isLogged, navigateTo, onLogin]);
 
-    const submitHandler = e => {
+    const handleSubmit = e => {
         e.preventDefault();
         login({ username, password });
     };
 
-    const handleEmail = e => setEmail(e.target.value);
     const handleUsername = e => setUsername(e.target.value);
     const handlePassword = e => setPassword(e.target.value);
 
     return (
         <>
             {loginIsLoading ? (
-                <h5>Loading...</h5>
+                <Spinner />
             ) : (
                 <div className='loginFormDiv'>
-                    <form onSubmit={submitHandler} className='loginForm'>
-                        <label htmlFor='email'>Username</label>
+                    <p className='form-title'>Login to your account</p>
+                    <form onSubmit={handleSubmit} className='loginForm'>
                         <input
-                            id='email'
-                            onChange={handleEmail}
-                            placeholder='Email'
-                            type='email'
-                            value={email}
-                        />
-
-                        <label htmlFor='username'>Username</label>
-                        <input
-                            id='username'
                             onChange={handleUsername}
                             placeholder='Username'
                             type='text'
                             value={username}
                         />
 
-                        <label htmlFor='password'>Password</label>
                         <input
-                            id='password'
                             onChange={handlePassword}
                             placeholder='Password'
                             type='password'
@@ -67,7 +54,7 @@ const LoginForm = ({ onLogin }) => {
                     </form>
                 </div>
             )}
-            {loginHasError && <h5>Credentials are wrong</h5>}
+            {loginHasError && <h5 className='login-error'>Credentials are wrong</h5>}
         </>
     );
 };

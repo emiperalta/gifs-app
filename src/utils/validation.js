@@ -16,7 +16,7 @@ export const validateWithFormik = values => {
 
     if (!values.email) errors.email = 'Email is required.';
     else if (!validEmail.test(values.email))
-        errors.email = 'Username needs to be a valid email.';
+        errors.email = 'Needs to be a valid email.';
 
     if (!values.username) errors.username = 'Username is required.';
     else if (values.username.length < 3)

@@ -18,11 +18,6 @@ const common = `
     &:active {
         background-color: #3d4361;
     }
-
-    [disabled] {
-        opacity: 0.3;
-        pointer-events: none;
-    }
 `;
 
 export const Link = styled(LinkWouter)(`
@@ -35,7 +30,12 @@ export const Link = styled(LinkWouter)(`
 
 export const Button = styled.button(`
     ${common}
-    font-size: 1.2rem;    
+    font-size: 1.2rem;     
+
+    &:[disabled] {
+        opacity: 0.3;
+        pointer-events: none;
+    }
 
     @media screen and (min-width: 200px) {
         width: 100px;

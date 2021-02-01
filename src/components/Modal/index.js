@@ -17,6 +17,7 @@ const Modal = ({ children, onClose }) => {
     );
 };
 
+// portal to avoid z-index problems
 const ModalPortal = ({ children, onClose }) => {
     return ReactDOM.createPortal(
         <Modal onClose={onClose}>{children}</Modal>,

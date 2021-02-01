@@ -31,7 +31,7 @@ const RegisterForm = () => {
                     </p>
                 </>
             ) : (
-                <div className='registerFormDiv'>
+                <div className='register-form-div'>
                     <p className='form-title'>Create your account</p>
                     <Formik
                         initialValues={initialValues}
@@ -48,7 +48,7 @@ const RegisterForm = () => {
                         }}
                     >
                         {({ errors, isSubmitting }) => (
-                            <Form className='registerForm'>
+                            <Form className='register-form'>
                                 <Field
                                     className={errors.email ? 'error' : ''}
                                     name='email'

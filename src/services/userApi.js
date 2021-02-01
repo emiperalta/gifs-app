@@ -19,6 +19,9 @@ export const userLogin = ({ username, password }) => {
         });
 };
 
+// TODO: forgot password
+// TODO: reset password
+
 export const userRegister = ({ email, username, password }) => {
     return fetch(`${REACT_APP_USERAPI_BASEURL}/register`, {
         method: 'POST',

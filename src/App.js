@@ -11,6 +11,7 @@ import SearchResults from 'pages/SearchResults';
 import Details from 'pages/Details';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
+import ForgotPassword from 'pages/ForgotPassword';
 import Error from 'pages/Error';
 
 import './App.css';
@@ -32,6 +33,7 @@ function App() {
                                 <Route path='/gif/:id' component={Details} />
                                 <Route path='/login' component={Login} />
                                 <Route path='/register' component={Register} />
+                                <Route path='/forgot' component={ForgotPassword} />
                                 <Route path='/404' component={Error} />
                             </Switch>
                         </GifsContextProvider>

@@ -1,43 +1,25 @@
-.loginFormDiv {
+.login-form-div {
+    margin-top: 20px !important;
     padding: 10px;
-    width: 100%;
     background-color: rgba(45, 45, 58, 0.9);
 }
 
-.loginForm {
+.login-form {
     display: flex;
     flex-direction: column;
 }
 
-.loginForm input {
+.login-form input {
     margin-bottom: 15px;
     outline: none;
+    padding-left: 5px;
 }
 
-.loginBtn {
-    width: 100%;
-    background-color: #eee;
-    border: none;
-    outline: none;
-    margin: 15px auto 0 auto;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-.loginBtn:hover {
-    background-color: #4b4f64;
-    color: #fff;
-}
-.loginBtn:active {
-    background-color: #3d4361;
-    color: #fff;
-}
-
-.loginForm input,
-.loginBtn,
+.login-form input,
 .login-error {
     outline: none;
-    font-family: 'Hind Siliguri', sans-serif !important;
-    font-size: 1.2rem;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 1.1rem;
     line-height: 2;
 }
 
@@ -47,12 +29,19 @@
     margin: 20px 0;
 }
 
+.button-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.button-link a {
+    margin-right: 5px;
+    font-size: 0.9rem;
+}
+
 @media screen and (min-width: 300px) {
-    .loginFormDiv {
+    .login-form-div {
         width: 260px;
         margin: 0 auto;
-    }
-    .loginBtn {
-        width: 240px;
     }
 }

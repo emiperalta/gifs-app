@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 
+import Button from 'components/Button';
 import useUser from 'hooks/useUser';
 import { validate } from 'utils/validation';
 
@@ -84,11 +85,11 @@ const RegisterForm = () => {
             {registerIsLoading ? (
                 <h5>Loading...</h5>
             ) : (
-                <div className='registerFormDiv'>
+                <div className='register-form-div'>
                     <form
                         onSubmit={submitHandler}
                         autoComplete='off'
-                        className='registerForm'
+                        className='register-form'
                     >
                         <label htmlFor='username'>Insert a username</label>
                         <input
@@ -124,7 +125,7 @@ const RegisterForm = () => {
                             <span className='input-error'>{errors.password}</span>
                         )}
 
-                        <button className='registerBtn'>Register</button>
+                        <Button>Register</Button>
                     </form>
                 </div>
             )}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'wouter';
+import { useLocation, Link } from 'wouter';
 
 import Button from 'components/Button';
 import Spinner from 'components/ContentLoader/LoadingSubmit';
@@ -34,9 +34,9 @@ const LoginForm = ({ onLogin }) => {
             {loginIsLoading ? (
                 <Spinner />
             ) : (
-                <div className='loginFormDiv'>
+                <div className='login-form-div'>
                     <p className='form-title'>Login to your account</p>
-                    <form onSubmit={handleSubmit} className='loginForm'>
+                    <form onSubmit={handleSubmit} className='login-form'>
                         <input
                             onChange={handleUsername}
                             placeholder='Username'
@@ -50,7 +50,10 @@ const LoginForm = ({ onLogin }) => {
                             type='password'
                             value={password}
                         />
-                        <Button>Login</Button>
+                        <div className='button-link'>
+                            <Button>Login</Button>
+                            <Link to='/forgot'>Forgot password?</Link>
+                        </div>
                     </form>
                 </div>
             )}

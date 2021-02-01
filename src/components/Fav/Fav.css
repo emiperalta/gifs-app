@@ -5,7 +5,7 @@
     z-index: 1;
 }
 
-.favBtn {
+.fav-btn {
     background: none;
     border-radius: 50%;
     border: none;
@@ -15,7 +15,7 @@
     width: 40px;
     height: 40px;
 }
-.favBtn:hover {
+.fav-btn:hover {
     background: rgb(85, 85, 85);
 }
 

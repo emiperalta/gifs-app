@@ -18,7 +18,7 @@ const SearchResults = ({ params: { keyword, rating, lang } }) => {
         once: false,
     });
 
-    const title = gifs ? `${gifs.length} results of ${decodeURI(keyword)}` : '';
+    const title = gifs && gifs.length > 0 ? `${decodeURI(keyword)}` : 'No results';
 
     const nextPageHandler = useCallback(
         debounce(() => setPage(prevPage => prevPage + 1), 200),
@@ -52,10 +52,18 @@ const SearchResults = ({ params: { keyword, rating, lang } }) => {
                         initLang={lang}
                     />
 
-                    <h3 className='searchWord'>{decodeURI(keyword)}</h3>
-                    <GifsList gifs={gifs} />
+                    {gifs.length > 0 ? (
+                        <>
+                            <h3 className='search-word'>{decodeURI(keyword)}</h3>
+                            <GifsList gifs={gifs} />
 
-                    <div id='bait' ref={externalRef}></div>
+                            <div id='bait' ref={externalRef}></div>
+                        </>
+                    ) : (
+                        <h3 className='no-results'>
+                            No results for "<strong>{decodeURI(keyword)}</strong>".
+                        </h3>
+                    )}
                 </>
             )}
         </>

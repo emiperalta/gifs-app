@@ -24,7 +24,7 @@ const Fav = ({ id }) => {
 
     return (
         <div className='gif-fav'>
-            <button onClick={handleFav} className='favBtn'>
+            <button onClick={handleFav} className='fav-btn'>
                 <svg
                     id='i-heart'
                     xmlns='http://www.w3.org/2000/svg'

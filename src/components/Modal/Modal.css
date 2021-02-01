@@ -12,8 +12,8 @@
 
 .modal-content {
     position: relative;
-    padding: 10px 10px;
-    height: 85vh;
+    padding: 15px 10px;
+    height: 350px;
     margin: 10vh 10px;
     background-color: rgba(25, 25, 34);
 }

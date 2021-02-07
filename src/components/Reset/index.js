@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'wouter';
 
 import Button from 'components/Button';
 import Spinner from 'components/ContentLoader/LoadingSubmit';
@@ -8,14 +9,16 @@ import '../LoginForm/LoginForm.css';
 
 const Reset = ({ token }) => {
     const [password, setPassword] = useState('');
+    const [, navigateTo] = useLocation();
     const { resetPassword, isLoading, hasError } = useUser();
 
     const handlePassword = e => setPassword(e.target.value);
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        resetPassword({ token, password });
+        resetPassword({ token, password }).then(res =>
+            res ? navigateTo('/login') : null
+        );
     };
 
     return (

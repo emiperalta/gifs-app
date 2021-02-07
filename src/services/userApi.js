@@ -9,7 +9,6 @@ export const userLogin = ({ username, password }) => {
         body: JSON.stringify({ username, password }),
     })
         .then(res => {
-            console.log(res);
             if (!res.ok) throw new Error('Response is NOT ok');
             return res.json();
         })
@@ -45,11 +44,8 @@ export const forgot = ({ email }) => {
     });
 };
 
-// TODO: reset password
-
 export const reset = ({ token, password }) => {
     return fetch(`${REACT_APP_USERAPI_BASEURL}/reset/${token}`, {
-        mode: 'no-cors',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

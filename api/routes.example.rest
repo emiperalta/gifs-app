@@ -19,6 +19,20 @@ Content-Type: application/json
     "password": "test"
 }
 
+### GET confirmation token
+GET {{baseURL}}/confirmation/abc123
+
+### GET reset password
+GET {{baseURL}}/reset/abc123
+
+### POST forgot password
+POST {{baseURL}}/forgot
+Content-Type: application/json
+
+{
+    "email": "test@test.com"
+}
+
 ### GET ALL Favs
 GET {{baseURL}}/favs/
 Authorization: Bearer <token>

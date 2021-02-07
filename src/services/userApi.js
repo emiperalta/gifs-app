@@ -19,9 +19,6 @@ export const userLogin = ({ username, password }) => {
         });
 };
 
-// TODO: forgot password
-// TODO: reset password
-
 export const userRegister = ({ email, username, password }) => {
     return fetch(`${REACT_APP_USERAPI_BASEURL}/register`, {
         method: 'POST',
@@ -29,6 +26,35 @@ export const userRegister = ({ email, username, password }) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, username, password }),
+    }).then(res => {
+        if (!res.ok) return false;
+        return true;
+    });
+};
+
+export const forgot = ({ email }) => {
+    return fetch(`${REACT_APP_USERAPI_BASEURL}/forgot`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+    }).then(res => {
+        if (!res.ok) return false;
+        return true;
+    });
+};
+
+// TODO: reset password
+
+export const reset = ({ token, password }) => {
+    return fetch(`${REACT_APP_USERAPI_BASEURL}/reset/${token}`, {
+        mode: 'no-cors',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password }),
     }).then(res => {
         if (!res.ok) return false;
         return true;

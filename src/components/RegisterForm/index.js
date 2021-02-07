@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import Button from 'components/Button';
 import useUser from 'hooks/useUser';
+import Spinner from 'components/ContentLoader/LoadingSubmit';
 import { validateWithFormik } from 'utils/validation';
 
 import './RegisterForm.css';
@@ -11,7 +12,7 @@ const RegisterForm = () => {
     const [email, setEmail] = useState('');
     const [registered, setRegistered] = useState(false);
 
-    const { register, registerHasError } = useUser();
+    const { register, hasError } = useUser();
 
     const initialValues = {
         email: '',
@@ -27,7 +28,8 @@ const RegisterForm = () => {
                         You've been successfully registered!
                     </h4>
                     <p className='confirmation-msg'>
-                        A confirmation email was sent to <strong>{email}</strong>
+                        A confirmation email was sent to '
+                        <strong style={{ color: 'coral' }}>{email}</strong>'
                     </p>
                 </>
             ) : (
@@ -47,56 +49,64 @@ const RegisterForm = () => {
                                 .catch(err => setErrors(err));
                         }}
                     >
-                        {({ errors, isSubmitting }) => (
-                            <Form className='register-form'>
-                                <Field
-                                    className={errors.email ? 'error' : ''}
-                                    name='email'
-                                    placeholder='Email'
-                                    required={true}
-                                    type='email'
-                                />
-                                <ErrorMessage
-                                    className='input-error'
-                                    component='small'
-                                    name='email'
-                                />
+                        {({ errors, isSubmitting }) =>
+                            isSubmitting ? (
+                                <Spinner />
+                            ) : (
+                                <>
+                                    <Form className='register-form'>
+                                        <Field
+                                            className={errors.email ? 'error' : ''}
+                                            name='email'
+                                            placeholder='Email'
+                                            required={true}
+                                            type='email'
+                                        />
+                                        <ErrorMessage
+                                            className='input-error'
+                                            component='small'
+                                            name='email'
+                                        />
 
-                                <Field
-                                    className={errors.username ? 'error' : ''}
-                                    name='username'
-                                    placeholder='Username'
-                                    required={true}
-                                    type='text'
-                                />
-                                <ErrorMessage
-                                    className='input-error'
-                                    component='small'
-                                    name='username'
-                                />
+                                        <Field
+                                            className={
+                                                errors.username ? 'error' : ''
+                                            }
+                                            name='username'
+                                            placeholder='Username'
+                                            required={true}
+                                            type='text'
+                                        />
+                                        <ErrorMessage
+                                            className='input-error'
+                                            component='small'
+                                            name='username'
+                                        />
 
-                                <Field
-                                    className={errors.password ? 'error' : ''}
-                                    name='password'
-                                    placeholder='Password'
-                                    required={true}
-                                    type='password'
-                                />
-                                <ErrorMessage
-                                    className='input-error'
-                                    name='password'
-                                    component='small'
-                                />
+                                        <Field
+                                            className={
+                                                errors.password ? 'error' : ''
+                                            }
+                                            name='password'
+                                            placeholder='Password'
+                                            required={true}
+                                            type='password'
+                                        />
+                                        <ErrorMessage
+                                            className='input-error'
+                                            name='password'
+                                            component='small'
+                                        />
 
-                                <Button type='submit' disabled={isSubmitting}>
-                                    Register
-                                </Button>
-                            </Form>
-                        )}
+                                        <Button type='submit'>Register</Button>
+                                    </Form>
+                                </>
+                            )
+                        }
                     </Formik>
                 </div>
             )}
-            {registerHasError && <h5>Username already in use!</h5>}
+            {hasError && <h5>Username already in use!</h5>}
         </>
     );
 };

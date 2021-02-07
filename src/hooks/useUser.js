@@ -2,13 +2,7 @@ import { useContext, useState, useCallback } from 'react';
 
 import UserContext from 'context/UserContext';
 
-import {
-    userLogin,
-    userRegister,
-    addFavService,
-    getFavsService,
-    deleteFavService,
-} from 'services/userApi';
+import * as userApi from 'services/userApi';
 
 const useUser = () => {
     const { jwt, setJwt, favs, setFavs, userLoggedIn, setUserLoggedIn } = useContext(
@@ -21,7 +15,8 @@ const useUser = () => {
         ({ username, password }) => {
             setState({ loading: true, error: false });
 
-            userLogin({ username, password })
+            userApi
+                .userLogin({ username, password })
                 .then(jwt => {
                     setJwt(jwt);
                     setState({ loading: false, error: false });
@@ -55,7 +50,44 @@ const useUser = () => {
     const register = useCallback(({ email, username, password }) => {
         setState({ loading: true, error: false });
 
-        return userRegister({ email, username, password })
+        return userApi
+            .userRegister({ email, username, password })
+            .then(res => {
+                res
+                    ? setState({ loading: false, error: false })
+                    : setState({ loading: false, error: true });
+                return res;
+            })
+            .catch(err => {
+                setState({ loading: false, error: true });
+                console.error(err);
+            });
+    }, []);
+
+    // forgot password
+    const forgotPassword = useCallback(({ email }) => {
+        setState({ loading: true, error: false });
+
+        return userApi
+            .forgot({ email })
+            .then(res => {
+                res
+                    ? setState({ loading: false, error: false })
+                    : setState({ loading: false, error: true });
+                return res;
+            })
+            .catch(err => {
+                setState({ loading: false, error: true });
+                console.error(err);
+            });
+    }, []);
+
+    // reset password
+    const resetPassword = useCallback(({ token, password }) => {
+        setState({ loading: true, error: false });
+
+        return userApi
+            .reset({ token, password })
             .then(res => {
                 res
                     ? setState({ loading: false, error: false })
@@ -70,7 +102,8 @@ const useUser = () => {
 
     // get all faved gifs
     const getFavs = useCallback(() => {
-        getFavsService({ jwt })
+        userApi
+            .getFavsService({ jwt })
             .then(userFavs => setFavs(userFavs))
             .catch(err => console.log(err));
     }, [jwt, setFavs]);
@@ -78,7 +111,8 @@ const useUser = () => {
     // add a gif to favs
     const addFav = useCallback(
         ({ id }) => {
-            addFavService({ id, jwt })
+            userApi
+                .addFavService({ id, jwt })
                 .then(newFav => setFavs(newFav))
                 .catch(err => console.error(err));
         },
@@ -88,7 +122,8 @@ const useUser = () => {
     // delete gif from favs
     const deleteFav = useCallback(
         ({ id }) => {
-            deleteFavService({ id, jwt })
+            userApi
+                .deleteFavService({ id, jwt })
                 .then(favDeleted => setFavs(favDeleted))
                 .catch(err => console.log(err));
         },
@@ -97,14 +132,14 @@ const useUser = () => {
 
     return {
         isLogged: Boolean(jwt),
+        isLoading: state.loading,
+        hasError: state.error,
         login,
-        loginIsLoading: state.loading,
-        loginHasError: state.error,
         logout,
-        register,
-        registerIsLoading: state.loading,
-        registerHasError: state.error,
         userLoggedIn,
+        register,
+        forgotPassword,
+        resetPassword,
         getFavs,
         addFav,
         deleteFav,

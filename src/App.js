@@ -12,6 +12,7 @@ import Details from 'pages/Details';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
 import ForgotPassword from 'pages/ForgotPassword';
+import ResetPassword from 'pages/ResetPassword';
 import Error from 'pages/Error';
 
 import './App.css';
@@ -34,6 +35,10 @@ function App() {
                                 <Route path='/login' component={Login} />
                                 <Route path='/register' component={Register} />
                                 <Route path='/forgot' component={ForgotPassword} />
+                                <Route
+                                    path='/reset/:token'
+                                    component={ResetPassword}
+                                />
                                 <Route path='/404' component={Error} />
                             </Switch>
                         </GifsContextProvider>

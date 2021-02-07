@@ -4,9 +4,9 @@ import * as authController from '../controllers/auth.controller';
 
 const router = Router();
 
-router.post('/login', authController.postLogin);
+router.post('/login', authController.login);
 
-router.post('/register', authController.postRegister);
+router.post('/register', authController.register);
 
 router.get('/confirmation/:token', authController.confirmAccount);
 

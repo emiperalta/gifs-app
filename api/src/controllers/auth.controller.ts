@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { RequestHandler } from 'express';
+import { json, RequestHandler } from 'express';
 import { compare, hash } from 'bcryptjs';
 
 import User from '../models/User';
@@ -11,7 +11,7 @@ import {
 
 const { API_URL, APP_URL } = process.env;
 
-export const postLogin: RequestHandler = async (req, res) => {
+export const login: RequestHandler = async (req, res) => {
     try {
         const { username, password } = req.body;
 
@@ -39,7 +39,7 @@ export const postLogin: RequestHandler = async (req, res) => {
     }
 };
 
-export const postRegister: RequestHandler = async (req, res) => {
+export const register: RequestHandler = async (req, res) => {
     try {
         const { email, username, password } = req.body;
 
@@ -89,6 +89,7 @@ export const resetPassword: RequestHandler = async (req, res) => {
     try {
         const { token } = req.params;
         const { password } = req.body;
+
         const verified: any = verifyToken(token);
 
         const newPassword = await hash(password, 10);
@@ -115,9 +116,7 @@ export const forgotPassword: RequestHandler = async (req, res) => {
             'reset your password'
         );
 
-        // TODO: when email is sent, client side has to show a message of 'check your email' or something like that
-
-        return res.status(200);
+        return res.status(200).json({ msg: 'email sent' });
     } catch (err) {
         return res.status(400).json({ error: err.message });
     }

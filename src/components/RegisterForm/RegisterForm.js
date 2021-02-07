@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 
 import Button from 'components/Button';
+import Spinner from 'components/ContentLoader/LoadingSubmit';
 import useUser from 'hooks/useUser';
 import { validate } from 'utils/validation';
 
@@ -83,7 +84,7 @@ const RegisterForm = () => {
     return (
         <>
             {registerIsLoading ? (
-                <h5>Loading...</h5>
+                <Spinner />
             ) : (
                 <div className='register-form-div'>
                     <form

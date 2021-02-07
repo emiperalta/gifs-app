@@ -12,7 +12,7 @@ const LoginForm = ({ onLogin }) => {
     const [password, setPassword] = useState('');
 
     const [, navigateTo] = useLocation();
-    const { isLogged, login, loginIsLoading, loginHasError } = useUser();
+    const { isLogged, login, isLoading, hasError } = useUser();
 
     useEffect(() => {
         if (isLogged) {
@@ -31,7 +31,7 @@ const LoginForm = ({ onLogin }) => {
 
     return (
         <>
-            {loginIsLoading ? (
+            {isLoading ? (
                 <Spinner />
             ) : (
                 <div className='login-form-div'>
@@ -57,7 +57,7 @@ const LoginForm = ({ onLogin }) => {
                     </form>
                 </div>
             )}
-            {loginHasError && <h5 className='login-error'>Credentials are wrong</h5>}
+            {hasError && <h5 className='login-error'>Credentials are wrong</h5>}
         </>
     );
 };

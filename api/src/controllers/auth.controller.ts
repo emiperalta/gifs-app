@@ -88,14 +88,16 @@ export const confirmAccount: RequestHandler = async (req, res) => {
 export const resetPassword: RequestHandler = async (req, res) => {
     try {
         const { token } = req.params;
+        console.log(req.params);
         const { password } = req.body;
+        console.log(req.body);
 
         const verified: any = verifyToken(token);
 
         const newPassword = await hash(password, 10);
-        await User.findByIdAndUpdate(verified.user, { newPassword });
+        await User.findByIdAndUpdate(verified.user, { password: newPassword });
 
-        return res.redirect(`${APP_URL}/login`);
+        return res.status(200).json({ msg: 'now you can login with new password' });
     } catch (err) {
         return res.status(400).json({ error: err.message });
     }

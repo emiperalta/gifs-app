@@ -2,13 +2,12 @@ import styled from '@emotion/styled';
 
 export const GifContainer = styled.div`
     position: relative;
-    height: 100%;
 
     & h5 {
+        position: absolute;
         font-size: 10px;
         margin: 4px 0 0 4px;
         padding: 0 2px;
-        position: absolute;
         top: 0;
         color: #e9e9e9;
         background: rgb(17, 17, 17, 0.3);
@@ -17,13 +16,29 @@ export const GifContainer = styled.div`
 
     & img {
         width: 100%;
-        object-fit: contain;
+        height: 100%;
+        object-fit: cover;
         vertical-align: top;
         cursor: initial;
     }
 
     & img:hover {
         outline: 1px solid #fff;
+    }
+
+    @media screen and (min-width: 600px) {
+        &:nth-child(5n + 1) {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+        &:nth-child(3n + 1) {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+        &:nth-child(8n + 1) {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
     }
 
     ${props => {

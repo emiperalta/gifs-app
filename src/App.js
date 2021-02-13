@@ -14,6 +14,7 @@ import Register from 'pages/Register';
 import ForgotPassword from 'pages/ForgotPassword';
 import ResetPassword from 'pages/ResetPassword';
 import Error from 'pages/Error';
+import Favs from 'pages/Favs';
 
 import './App.css';
 
@@ -40,6 +41,7 @@ function App() {
                                     component={ResetPassword}
                                 />
                                 <Route path='/404' component={Error} />
+                                <Route path='/favs' component={Favs} />
                             </Switch>
                         </GifsContextProvider>
                     </section>

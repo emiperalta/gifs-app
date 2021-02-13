@@ -19,7 +19,9 @@ const Header = () => {
             <section className='header-links'>
                 {isLogged ? (
                     <>
-                        <span>{userLoggedIn}</span>
+                        <span>
+                            <Link to='/favs'>{userLoggedIn}</Link>
+                        </span>
                         <button onClick={logout}>Logout</button>
                     </>
                 ) : (

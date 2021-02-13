@@ -42,10 +42,13 @@
 .header-links button:active {
     background-color: rgb(32, 34, 37);
 }
-.header-links span {
+.header-links span,
+.header-links span a {
     font-size: 16px;
-    margin-left: 14px;
-    color: rgb(153, 153, 153);
+    color: rgb(153, 153, 153) !important;
+}
+.header-links span a:hover {
+    background: none;
 }
 .header-links button {
     font-size: 18px;

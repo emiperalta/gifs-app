@@ -7,6 +7,7 @@
     --trend-bg-color2: darkslategray;
     --trend-bg-color3: midnightblue;
     --grid-column: 400px;
+    --grid-row: 200px;
 }
 
 * {

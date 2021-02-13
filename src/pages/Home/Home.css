@@ -8,3 +8,15 @@
     color: #8e9db4;
     text-decoration: underline;
 }
+
+.warning-message {
+    font-size: 1.3rem;
+    margin-top: 3rem;
+}
+
+.warning-message a {
+    color: rgb(207, 205, 79);
+}
+.warning-message a:hover {
+    color: rgb(163, 161, 46);
+}

@@ -25,6 +25,7 @@ const useFavedGifs = () => {
             .catch(err => {
                 setIsLoading(false);
                 setHasError(true);
+                console.error(err);
             });
     }, [setGifs, favs]);
 
